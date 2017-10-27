@@ -68,6 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapWrapper = __webpack_require__(1)
+var Route = __webpack_require__(2)
 
 var app = function () {
   renderMap()
@@ -80,17 +81,17 @@ var renderMap = function () {
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap
   })
-    renderRoute()
-}
+    var origin = {lat: 55.9445594, lng: -3.1984787}
+    var destination = {lat:55.9604718, lng: -3.2035689}
 
-var codeclan = new google.maps.LatLng(55.9445594, -3.1984787);
-var lalba = new google.maps.LatLng(55.9604718, -3.2035689);
+    var route = new Route("Georgia", origin, destination)
 
-var route = function (name, origin, destination) {
-  this.name = name,
-  this.origin = origin,
-  this.destination = destination,
-  this.waypoints = []
+    var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
+
+    waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
+
+    renderRoute(route)
+
 }
 
 var renderRoute = function (route) {
@@ -104,7 +105,6 @@ var renderRoute = function (route) {
   })
 }
 
-[{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
 
 
 window.addEventListener("DOMContentLoaded", app);
@@ -365,6 +365,29 @@ var MapWrapper = function (container) {
 }
 
 module.exports = MapWrapper
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var Route = function (name, origin, destination) {
+  this.name = name,
+  this.origin = origin,
+  this.destination = destination,
+  this.waypoints = []
+}
+
+Route.prototype.addWaypoint = function (location) {
+  var waypoint = {
+    location: location,
+    stopover: true
+  }
+  this.waypoints.push(waypoint)
+};
+
+
+module.exports = Route;
 
 
 /***/ })
