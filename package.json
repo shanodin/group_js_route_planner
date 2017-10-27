@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha specs",
+    "start": "nodemon server.js",
+    "build": "cd client && webpack -w",
+    "seed": "cd server/db && mongo < seed_routes.js && mongo < seed_cultural.js"
+
   },
   "repository": {
     "type": "git",
