@@ -1,7 +1,13 @@
+var MapWrapper = require('./views/mapWrapper.js')
+
 var app = function () {
-
-
+  renderMap()
   
 }
 
-window.addEventListenener("DOMContentLoaded", app);
+var renderMap = function () {
+  var mapDiv = document.querySelector('div#main-map')
+  var mainMap = new MapWrapper(mapDiv)
+}
+
+window.addEventListener("DOMContentLoaded", app);

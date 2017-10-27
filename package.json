@@ -9,7 +9,6 @@
     "build": "cd client && webpack -w",
     "seed": "cd server/db && npm run seed1",
     "seed1": "mongo < seed_routes.js && mongo < seed_cultural.js"
-    
   },
   "repository": {
     "type": "git",
