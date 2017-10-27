@@ -11,18 +11,31 @@ var renderMap = function () {
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap
   })
+    renderRoute()
+}
 
-  var codeclan = new google.maps.LatLng(55.9445594, -3.1984787);
-  var lalba = new google.maps.LatLng(55.9604718, -3.2035689);
+var codeclan = new google.maps.LatLng(55.9445594, -3.1984787);
+var lalba = new google.maps.LatLng(55.9604718, -3.2035689);
 
+var route = function (name, origin, destination) {
+  this.name = name,
+  this.origin = origin,
+  this.destination = destination,
+  this.waypoints = []
+}
+
+var renderRoute = function (route) {
   directionsService.route({
-    origin: codeclan,
-    destination: lalba,
+    origin:  new google.maps.LatLng(route.origin),
+    destination: route.destination,
     travelMode: google.maps.TravelMode.WALKING,
-    waypoints: [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Palace of Holyroodhouse", stopover: true}, {location: "Scottish National Portrait Gallery", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "Arthur's Seat", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
-  }, function(response, status){
+    waypoints: route.waypoints
+    }, function(response, status){
     directionsDisplay.setDirections(response)
   })
 }
+
+[{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
+
 
 window.addEventListener("DOMContentLoaded", app);
