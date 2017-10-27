@@ -1,8 +1,10 @@
 var MapWrapper = require('./views/mapWrapper.js')
 var Route = require("./models/route.js")
 
+
 var app = function () {
   renderMap()
+  requestFlickr("edinburghcastle")
 }
 
 var renderMap = function () {
@@ -35,6 +37,20 @@ var renderRoute = function (route) {
     directionsDisplay.setDirections(response)
   })
 }
+
+var requestFlickr = function(tag) {
+    url = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=56a4f5d0179598fb68c82a2f0973331f&text=" + tag + "&format=json&nojsoncallback=1"
+    var request = new XMLHttpRequest()
+    request.open( "GET", url );
+    request.addEventListener( "load", function() {
+    response = JSON.parse( this.responseText )
+    console.log(response)
+    console.log(response.photos.photo[0])
+    // console.log()
+  })
+  request.send()
+}
+
 
 
 
