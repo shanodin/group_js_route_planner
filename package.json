@@ -7,9 +7,10 @@
     "test": "mocha specs",
     "start": "cd server && nodemon server.js",
     "build": "cd client && webpack -w",
-    "seed": "cd server/db && npm run seed1",
-    "seed1": "mongo < seed_routes.js && mongo < seed_cultural.js"
+    "seed": "cd server/db && mongo < seed_routes.js && mongo < seed_cultural.js"
+
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shanodin/group_js_route_planner.git"
