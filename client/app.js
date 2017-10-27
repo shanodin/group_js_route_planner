@@ -18,7 +18,8 @@ var renderMap = function () {
   directionsService.route({
     origin: codeclan,
     destination: lalba,
-    travelMode: google.maps.TravelMode.WALKING
+    travelMode: google.maps.TravelMode.WALKING,
+    waypoints: [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Palace of Holyroodhouse", stopover: true}, {location: "Scottish National Portrait Gallery", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "Arthur's Seat", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
   }, function(response, status){
     directionsDisplay.setDirections(response)
   })
