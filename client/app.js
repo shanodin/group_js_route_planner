@@ -1,13 +1,12 @@
 var MapWrapper = require('./views/mapWrapper.js')
 var Route = require('./models/route.js')
-// var requestHelper = require('./helpers/request_helper.js')
-var routesQueryHelper = require('./../server/db/routesQueryHelper.js')
-var dropdownMaker = require('./views/dropdownMaker.js')
+var requestHelper = require('./helpers/request_helper.js')
+// var dropdownMaker = require('./views/dropdownMaker.js')
 
 var app = function () {
   renderMap()
   requestFlickr('edinburghnationalgallery')
-  setUpRouteList()
+  // setUpRouteList()
 }
 
 var renderMap = function () {
@@ -56,15 +55,15 @@ var requestFlickr = function (tag) {
   request.send()
 }
 
-var setUpRouteList = function () {
-  // var url = 'http://localhost:3000/api/routes'
-  routesQueryHelper.all(function (routes) {
-    var routeNames = routes.map(function (route) {
-      return route.name
-    })
-    var routeSelect = document.querySelector('#route-select')
-    dropdownMaker.setUpDropDown(routeNames, routeSelect)
-  })
-}
+// var setUpRouteList = function () {
+//   // var url = 'http://localhost:3000/api/routes'
+//   routesQueryHelper.all(function (routes) {
+//     var routeNames = routes.map(function (route) {
+//       return route.name
+//     })
+//     var routeSelect = document.querySelector('#route-select')
+//     dropdownMaker.setUpDropDown(routeNames, routeSelect)
+//   })
+// }
 
 window.addEventListener('DOMContentLoaded', app)
