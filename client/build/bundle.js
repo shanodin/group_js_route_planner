@@ -81,7 +81,8 @@ var renderMap = function () {
   var mainMap = new MapWrapper(mapDiv)
   directionsService = new google.maps.DirectionsService(),
   directionsDisplay = new google.maps.DirectionsRenderer({
-    map: mainMap.googleMap
+    map: mainMap.googleMap,
+    suppressMarkers: true
   })
     var origin = {lat: 55.9445594, lng: -3.1984787}
     var destination = {lat:55.9604718, lng: -3.2035689}
@@ -119,7 +120,6 @@ var requestFlickr = function(tag) {
     var flickrImage = document.createElement("IMG")
     flickrImage.setAttribute('src', imageUrl)
     photoDiv.appendChild(flickrImage)
-
     console.log(imageUrl)
   })
   request.send()
