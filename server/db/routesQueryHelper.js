@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient
 
 var routesQueryHelper = {
-  url: 'mongodb://localhost:27017/walkable-edinburgh',
+  url: 'mongodb://localhost:27017/route_planner',
   all: function (onQueryFinished) {
     MongoClient.connect(this.url, function (err, db) {
       var routesCollection = db.collection('routes')

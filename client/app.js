@@ -1,12 +1,12 @@
 var MapWrapper = require('./views/mapWrapper.js')
 var Route = require('./models/route.js')
 var requestHelper = require('./helpers/request_helper.js')
-// var dropdownMaker = require('./views/dropdownMaker.js')
+var dropdownMaker = require('./views/dropdownMaker.js')
 
 var app = function () {
   renderMap()
   requestFlickr('edinburghnationalgallery')
-  // setUpRouteList()
+  setUpRouteList()
 }
 
 var renderMap = function () {
@@ -28,24 +28,21 @@ var renderMap = function () {
   {location: "Ross Fountain", stopover: true},
   {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
   {location: "Mary's Milk Bar", stopover: true},
-  // {location: "Martyrs' Memorial", stopover: true},
   {location: "The Bow Bar", stopover: false},
   {location: "David Hume Statue", stopover: true},
   {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
-
-
 
     waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
 
     renderRoute(route)
     mainMap.addMarker(origin)
     mainMap.addMarker(destination)
+  }
 
-
-  var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
-  waypoints.forEach(function (waypoint) {route.addWaypoint(waypoint.location) })
-  renderRoute(route)
-}
+//   var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
+//   waypoints.forEach(function (waypoint) {route.addWaypoint(waypoint.location) })
+//   renderRoute(route)
+// }
 
 var renderRoute = function (route) {
   directionsService.route({
@@ -75,15 +72,13 @@ var requestFlickr = function (tag) {
   request.send()
 }
 
-// var setUpRouteList = function () {
-//   // var url = 'http://localhost:3000/api/routes'
-//   routesQueryHelper.all(function (routes) {
-//     var routeNames = routes.map(function (route) {
-//       return route.name
-//     })
-//     var routeSelect = document.querySelector('#route-select')
-//     dropdownMaker.setUpDropDown(routeNames, routeSelect)
-//   })
-// }
+var setUpRouteList = function () {
+  var url = 'http://localhost:3000/api/routes'
+  var routeSelect = document.querySelector('#route-select')
+  requestHelper.getRequest(url, function (routes) {
+    dropdownMaker.setUpDropDown(routes, routeSelect)
+  })
+}
+
 
 window.addEventListener('DOMContentLoaded', app)

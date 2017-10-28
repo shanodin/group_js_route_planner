@@ -74,3 +74,5 @@ db.routes.insert([
 }
 
 ])
+
+db.routes.find()
