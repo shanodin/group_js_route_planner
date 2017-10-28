@@ -17,8 +17,25 @@ var renderMap = function () {
     map: mainMap.googleMap,
     suppressMarkers: true
   })
+<<<<<<< HEAD
   var origin = {lat: 55.9445594, lng: -3.1984787}
   var destination = {lat:55.9604718, lng: -3.2035689}
+=======
+  var origin = {lat: 55.9519361, lng: -3.1917565}
+  var destination = {lat: 55.9519361, lng: -3.1917565}
+
+  var route = new Route("Test Route", origin, destination)
+
+  var waypoints = [{location: "Scott Monument", stopover: true},
+  {location: "The Royal Scots Greys Monument", stopover: true},
+  {location: "Ross Fountain", stopover: true},
+  {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
+  {location: "Mary's Milk Bar", stopover: true},
+  // {location: "Martyrs' Memorial", stopover: true},
+  {location: "The Bow Bar", stopover: false},
+  {location: "David Hume Statue", stopover: true},
+  {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
+>>>>>>> develop
 
   var route = new Route("Georgia", origin, destination)
 
