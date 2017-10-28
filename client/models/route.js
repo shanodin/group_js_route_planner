@@ -11,7 +11,6 @@ Route.prototype.addWaypoint = function (location) {
     stopover: true
   }
   this.waypoints.push(waypoint)
-};
+}
 
-
-module.exports = Route;
+module.exports = Route
