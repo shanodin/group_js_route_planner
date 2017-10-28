@@ -65,27 +65,28 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-<<<<<<< HEAD
-=======
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapWrapper = __webpack_require__(1)
 var Route = __webpack_require__(2)
-
+var requestHelper = __webpack_require__(3)
+// var dropdownMaker = require('./views/dropdownMaker.js')
 
 var app = function () {
   renderMap()
-  requestFlickr("edinburghnationalgallery")
+  requestFlickr('edinburghnationalgallery')
+  // setUpRouteList()
 }
 
 var renderMap = function () {
   var mapDiv = document.querySelector('div#main-map')
   var mainMap = new MapWrapper(mapDiv)
-  directionsService = new google.maps.DirectionsService(),
+  directionsService = new google.maps.DirectionsService()
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap,
     suppressMarkers: true
   })
+
   var origin = {lat: 55.9519361, lng: -3.1917565}
   var destination = {lat: 55.9519361, lng: -3.1917565}
 
@@ -101,12 +102,18 @@ var renderMap = function () {
   {location: "David Hume Statue", stopover: true},
   {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
 
+
+
     waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
 
     renderRoute(route)
     mainMap.addMarker(origin)
     mainMap.addMarker(destination)
 
+
+  var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
+  waypoints.forEach(function (waypoint) {route.addWaypoint(waypoint.location) })
+  renderRoute(route)
 }
 
 var renderRoute = function (route) {
@@ -115,17 +122,17 @@ var renderRoute = function (route) {
     destination: route.destination,
     travelMode: google.maps.TravelMode.WALKING,
     waypoints: route.waypoints
-    }, function(response, status){
+  }, function (response, status) {
     directionsDisplay.setDirections(response)
   })
 }
 
-var requestFlickr = function(tag) {
-    var url = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=56a4f5d0179598fb68c82a2f0973331f&text=" + tag + "&format=json&nojsoncallback=1"
-    var request = new XMLHttpRequest()
-    request.open( "GET", url );
-    request.addEventListener( "load", function() {
-    response = JSON.parse( this.responseText )
+var requestFlickr = function (tag) {
+  var url = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=56a4f5d0179598fb68c82a2f0973331f&text=" + tag + "&format=json&nojsoncallback=1"
+  var request = new XMLHttpRequest()
+  request.open("GET", url)
+  request.addEventListener( "load", function () {
+    var response = JSON.parse(this.responseText)
     var photo = response.photos.photo[0]
     var imageUrl = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg"
     var photoDiv = document.querySelector('div#flickr-photo')
@@ -137,10 +144,18 @@ var requestFlickr = function(tag) {
   request.send()
 }
 
+// var setUpRouteList = function () {
+//   // var url = 'http://localhost:3000/api/routes'
+//   routesQueryHelper.all(function (routes) {
+//     var routeNames = routes.map(function (route) {
+//       return route.name
+//     })
+//     var routeSelect = document.querySelector('#route-select')
+//     dropdownMaker.setUpDropDown(routeNames, routeSelect)
+//   })
+// }
 
-
-
-window.addEventListener("DOMContentLoaded", app);
+window.addEventListener('DOMContentLoaded', app)
 
 
 /***/ }),
@@ -422,10 +437,56 @@ module.exports = MapWrapper
 
 /***/ }),
 /* 2 */
->>>>>>> develop
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Unexpected token (20:2)\nYou may need an appropriate loader to handle this file type.\n|     suppressMarkers: true\n|   })\n| <<<<<<< HEAD\n|   var origin = {lat: 55.9445594, lng: -3.1984787}\n|   var destination = {lat:55.9604718, lng: -3.2035689}");
+var Route = function (name, origin, destination) {
+  this.name = name,
+  this.origin = origin,
+  this.destination = destination,
+  this.waypoints = []
+}
+
+Route.prototype.addWaypoint = function (location) {
+  var waypoint = {
+    location: location,
+    stopover: true
+  }
+  this.waypoints.push(waypoint)
+}
+
+module.exports = Route
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var requestHelper = {
+  getRequest: function (url, callback) {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+
+    xhr.addEventListener('load', function () {
+      var jsonString = xhr.responseText
+      var data = JSON.parseO(jsonString)
+      callback(data)
+    })
+    xhr.send()
+  },
+
+  postRequest: function (url, callback, payload) {
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', url)
+
+    xhr.setRequestHeader('Content-Type', 'application/json')
+
+    var jsonString = JSON.stringify(payload)
+    xhr.send(jsonString)
+  }
+}
+
+module.exports = requestHelper
+
 
 /***/ })
 /******/ ]);

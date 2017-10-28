@@ -17,10 +17,7 @@ var renderMap = function () {
     map: mainMap.googleMap,
     suppressMarkers: true
   })
-<<<<<<< HEAD
-  var origin = {lat: 55.9445594, lng: -3.1984787}
-  var destination = {lat:55.9604718, lng: -3.2035689}
-=======
+
   var origin = {lat: 55.9519361, lng: -3.1917565}
   var destination = {lat: 55.9519361, lng: -3.1917565}
 
@@ -35,17 +32,15 @@ var renderMap = function () {
   {location: "The Bow Bar", stopover: false},
   {location: "David Hume Statue", stopover: true},
   {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
->>>>>>> develop
 
-<<<<<<< HEAD
-  var route = new Route("Georgia", origin, destination)
-=======
+
+
     waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
 
     renderRoute(route)
     mainMap.addMarker(origin)
     mainMap.addMarker(destination)
->>>>>>> develop
+
 
   var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
   waypoints.forEach(function (waypoint) {route.addWaypoint(waypoint.location) })
