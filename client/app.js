@@ -33,6 +33,8 @@ var renderMap = function () {
     waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
 
     renderRoute(route)
+    mainMap.addMarker(origin)
+    mainMap.addMarker(destination)
 
 }
 

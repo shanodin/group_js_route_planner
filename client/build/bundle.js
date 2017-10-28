@@ -102,6 +102,8 @@ var renderMap = function () {
     waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
 
     renderRoute(route)
+    mainMap.addMarker(origin)
+    mainMap.addMarker(destination)
 
 }
 
@@ -391,6 +393,26 @@ var MapWrapper = function (container) {
 ]
   })
   this.googleMap.setMapTypeId('roadmap')
+}
+
+MapWrapper.prototype.addMarker = function (coords) {
+  var marker = new google.maps.Marker({
+    position: coords,
+    map: this.googleMap
+  })
+  var infoWindow = this.createInfoWindow(coords)
+    marker.addListener('click', function() {
+    infoWindow.open(marker.map, marker);
+
+  })
+  // this.markers.push(marker);
+};
+
+MapWrapper.prototype.createInfoWindow = function (coords) {
+  var infoWindow = new google.maps.InfoWindow({
+    content: "Latitude: " + coords.lat + " Longitude: " + coords.lng
+    })
+  return infoWindow
 }
 
 module.exports = MapWrapper
