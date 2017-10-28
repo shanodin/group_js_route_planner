@@ -1,4 +1,4 @@
-var routeQueryHelper = require('../db/routeQueryHelper')
+var routesQueryHelper = require('../db/routesQueryHelper')
 var express = require('express')
 var routesRouter = express.Router()
 

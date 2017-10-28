@@ -8,9 +8,7 @@
     "start": "cd server && nodemon server.js",
     "build": "cd client && webpack -w",
     "seed": "cd server/db && mongo < seed_routes.js && mongo < seed_cultural.js"
-
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shanodin/group_js_route_planner.git"
@@ -25,7 +23,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "node-loader": "^0.6.0"
   },
   "devDependencies": {
     "mocha": "^4.0.1",
