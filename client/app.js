@@ -37,7 +37,15 @@ var renderMap = function () {
   {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
 >>>>>>> develop
 
+<<<<<<< HEAD
   var route = new Route("Georgia", origin, destination)
+=======
+    waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
+
+    renderRoute(route)
+    mainMap.addMarker(origin)
+    mainMap.addMarker(destination)
+>>>>>>> develop
 
   var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
   waypoints.forEach(function (waypoint) {route.addWaypoint(waypoint.location) })
