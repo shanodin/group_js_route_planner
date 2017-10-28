@@ -2,6 +2,7 @@ var MapWrapper = require('./views/mapWrapper.js')
 var Route = require('./models/route.js')
 var requestHelper = require('./helpers/request_helper.js')
 var dropdownMaker = require('./views/dropdownMaker.js')
+var listRoutes = []
 
 var app = function () {
   renderMap()
@@ -72,6 +73,24 @@ var requestFlickr = function (tag) {
   request.send()
 }
 
+// var setUpRouteList = function () {
+//   var url = 'http://localhost:3000/api/routes'
+//   var routeSelect = document.querySelector('#route-select')
+//
+//   requestHelper.getRequest(url, function (routes) {
+//     console.log(routes);
+//     listRoutes = routes
+//     dropdownMaker.setUpDropDown(routes, routeSelect)
+//   })
+//
+//   routeSelect.addEventListener('change', function () {
+//     // console.log()
+//     var currentSelectedRoute = listRoutes[this.value]
+//     console.log(currentSelectedRoute)
+//   })
+// }
+
+
 var setUpRouteList = function () {
   var url = 'http://localhost:3000/api/routes'
   var routeSelect = document.querySelector('#route-select')
@@ -79,6 +98,5 @@ var setUpRouteList = function () {
     dropdownMaker.setUpDropDown(routes, routeSelect)
   })
 }
-
 
 window.addEventListener('DOMContentLoaded', app)
