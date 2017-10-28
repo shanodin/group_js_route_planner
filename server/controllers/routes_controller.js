@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 var routesQueryHelper = require('../db/routesQueryHelper')
-=======
-var routeQueryHelper = require('../db/routesQueryHelper')
->>>>>>> develop
+
+
 var express = require('express')
 var routesRouter = express.Router()
 
