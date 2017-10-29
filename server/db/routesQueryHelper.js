@@ -11,6 +11,16 @@ var routesQueryHelper = {
       })
     })
   },
+  find: function (routeName, onQueryFinished) {
+    MongoClient.connect(this.url, function (err, db) {
+      var routesCollection = db.collection('routes')
+
+      routesCollection.find({ name: routeName }).toArray(function (err, docs) {
+        onQueryFinished(docs)
+      })
+    })
+  },
+  
   save: function (routeToSave, onQueryFinished) {
     MongoClient.connect(this.url, function (err, db) {
       var routesCollection = db.collection('routes')

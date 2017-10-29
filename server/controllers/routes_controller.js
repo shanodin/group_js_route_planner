@@ -13,6 +13,12 @@ routesRouter.get('/', function (req, res) {
   })
 })
 
+routesRouter.get('/:id', function (req, res) {
+  routesQueryHelper.find(req.params.id, function (route) {
+    res.json(route)
+  })
+})
+
 routesRouter.post('/', function (req, res) {
   var route = req.body
   routesQueryHelper.save(route, function (updatedRoutes) {

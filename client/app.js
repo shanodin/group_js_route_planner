@@ -8,6 +8,12 @@ var app = function () {
   renderMap()
   requestFlickr('edinburghnationalgallery')
   setUpRouteList()
+
+    var routeSelect = document.querySelector('#route-select')
+    routeSelect.addEventListener('change', function () {
+      console.dir(this.value) })
+      // var currentSelectedRoute = listRoutes[this.value]
+      // console.log(currentSelectedRoute)
 }
 
 var renderMap = function () {
@@ -75,7 +81,6 @@ var requestFlickr = function (tag) {
 
 // var setUpRouteList = function () {
 //   var url = 'http://localhost:3000/api/routes'
-//   var routeSelect = document.querySelector('#route-select')
 //
 //   requestHelper.getRequest(url, function (routes) {
 //     console.log(routes);
@@ -83,10 +88,6 @@ var requestFlickr = function (tag) {
 //     dropdownMaker.setUpDropDown(routes, routeSelect)
 //   })
 //
-//   routeSelect.addEventListener('change', function () {
-//     // console.log()
-//     var currentSelectedRoute = listRoutes[this.value]
-//     console.log(currentSelectedRoute)
 //   })
 // }
 

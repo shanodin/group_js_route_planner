@@ -4,7 +4,7 @@ db.routes.drop()
 
 db.routes.insert([
   {
-    name: "3 hour route",
+    name: "Three hour route",
     origin: {lat: 55.9519361, lng: -3.1917565},
     destination: {lat: 55.9519361, lng: -3.1917565},
     waypoints:[{location: "Scott Monument", stopover: true},

@@ -13,6 +13,19 @@ var requestHelper = {}
     xhr.send()
   }
 
+
+  requestHelper.find = function (url, name, callback) {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+
+    xhr.addEventListener('load', function () {
+      var jsonString = xhr.responseText
+      var data = JSON.parse(jsonString)
+      callback(data)
+    })
+    xhr.send()
+  }
+
   requestHelper.postRequest = function (url, callback, payload) {
     var xhr = new XMLHttpRequest()
     xhr.open('POST', url)

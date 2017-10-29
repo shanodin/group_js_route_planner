@@ -6,9 +6,9 @@ dropdownMaker.setUpDropDown = function (items, select) {
     option.innerText = item.name
     select.appendChild(option)
   })
-  select.addEventListener('change', function () {
-    console.log(this.value)
-  })
+  // select.addEventListener('change', function () {
+  //   console.log(this.value)
+  // })
 }
 
 module.exports = dropdownMaker
