@@ -20,6 +20,10 @@ var findRoute = function(value){
   var url = "http://localhost:3000/api/routes/" + value
   requestHelper.find(url, function(foundRoute){
     renderRoute(foundRoute[0])
+    // console.log(foundRoute[0].origin) returns a latlong object
+    //function to loop through route waypoints
+    //compare to database objects
+    // map new array and add markers with appropriate info bubble
     console.log("request sent",foundRoute[0]);
   })
 }
@@ -30,7 +34,7 @@ var renderMap = function () {
   directionsService = new google.maps.DirectionsService()
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap,
-    // suppressMarkers: true
+    suppressMarkers: true
   })
 
   var origin = {lat: 55.9519361, lng: -3.1917565}
