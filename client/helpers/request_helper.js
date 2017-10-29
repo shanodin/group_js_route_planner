@@ -14,7 +14,7 @@ var requestHelper = {}
   }
 
 
-  requestHelper.find = function (url, name, callback) {
+  requestHelper.find = function (url, callback) {
     var xhr = new XMLHttpRequest()
     xhr.open('GET', url)
 

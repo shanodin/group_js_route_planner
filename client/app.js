@@ -6,14 +6,22 @@ var listRoutes = []
 
 var app = function () {
   renderMap()
-  requestFlickr('edinburghnationalgallery')
+  // requestFlickr('edinburghnationalgallery')
   setUpRouteList()
 
     var routeSelect = document.querySelector('#route-select')
     routeSelect.addEventListener('change', function () {
-      console.dir(this.value) })
-      // var currentSelectedRoute = listRoutes[this.value]
-      // console.log(currentSelectedRoute)
+      findRoute(this.value);
+    })
+
+}
+
+var findRoute = function(value){
+  var url = "http://localhost:3000/api/routes/" + value
+  requestHelper.find(url, function(foundRoute){
+    renderRoute(foundRoute[0])
+    console.log("request sent",foundRoute[0]);
+  })
 }
 
 var renderMap = function () {
@@ -22,28 +30,28 @@ var renderMap = function () {
   directionsService = new google.maps.DirectionsService()
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap,
-    suppressMarkers: true
+    // suppressMarkers: true
   })
 
   var origin = {lat: 55.9519361, lng: -3.1917565}
   var destination = {lat: 55.9519361, lng: -3.1917565}
 
-  var route = new Route("Test Route", origin, destination)
-
-  var waypoints = [{location: "Scott Monument", stopover: true},
-  {location: "The Royal Scots Greys Monument", stopover: true},
-  {location: "Ross Fountain", stopover: true},
-  {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
-  {location: "Mary's Milk Bar", stopover: true},
-  {location: "The Bow Bar", stopover: false},
-  {location: "David Hume Statue", stopover: true},
-  {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
-
-    waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
-
-    renderRoute(route)
-    mainMap.addMarker(origin)
-    mainMap.addMarker(destination)
+  // var route = new Route("Test Route", origin, destination)
+  //
+  // var waypoints = [{location: "Scott Monument", stopover: true},
+  // {location: "The Royal Scots Greys Monument", stopover: true},
+  // {location: "Ross Fountain", stopover: true},
+  // {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
+  // {location: "Mary's Milk Bar", stopover: true},
+  // {location: "The Bow Bar", stopover: false},
+  // {location: "David Hume Statue", stopover: true},
+  // {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
+  //
+  //   waypoints.forEach(function(waypoint){route.addWaypoint(waypoint.location)})
+  //
+  //   renderRoute(route)
+  //   mainMap.addMarker(origin)
+  //   mainMap.addMarker(destination)
   }
 
 //   var waypoints = [{location: "Edinburgh Castle", stopover: true}, {location: "Waverley Station", stopover: true}, {location: "Scottish National Gallery of Modern Art", stopover: true}, {location: "The Royal Scots Club", stopover: true}]
@@ -52,13 +60,15 @@ var renderMap = function () {
 // }
 
 var renderRoute = function (route) {
+  console.log("requesting route")
   directionsService.route({
-    origin:  new google.maps.LatLng(route.origin),
+    origin:  route.origin,
     destination: route.destination,
     travelMode: google.maps.TravelMode.WALKING,
     waypoints: route.waypoints
   }, function (response, status) {
     directionsDisplay.setDirections(response)
+    console.log("rendering to screen", response);
   })
 }
 
