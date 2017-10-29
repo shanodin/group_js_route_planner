@@ -1,11 +1,11 @@
 
-var routesQueryHelper = require('../db/routesQueryHelper')
+var QueryHelper = require('../db/query_helper.js')
 
 
 var express = require('express')
 var routesRouter = express.Router()
 
-// var routesQueryHelper = new routesQueryHelper('mongodb://localhost:27017/route_planner', 'routes')
+var routesQueryHelper = new QueryHelper("routes")
 
 routesRouter.get('/', function (req, res) {
   routesQueryHelper.all(function (routes) {
