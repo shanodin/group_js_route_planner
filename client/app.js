@@ -19,7 +19,11 @@ var app = function () {
   var waypointSelect = document.querySelector("#waypoint-select")
   var url = 'http://localhost:3000/api/waypoints'
   requestHelper.getRequest(url, function (waypoints) {
-    dropdownMaker.setUpDropDown(waypoints, waypointSelect)
+    // dropdownMaker.setUpDropDown(waypoints, waypointSelect)
+  var waypointHTwo = document.querySelector("#waypoint-h2")
+    waypoints.forEach(function(waypoint){
+    renderCheckBoxes(waypoint, waypointHTwo)
+    })
   })
 
   var routeName = document.querySelector("#route-name")
@@ -28,10 +32,10 @@ var app = function () {
 
   var saveButton = document.querySelector("#plan-route-btn")
   saveButton.addEventListener("click", function(){
-    console.log("Button clicked");
+    // console.log("Button clicked");
     var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
     customRoute.addWaypoint(waypointSelect.value)
-    console.log("Route is created:", customRoute);
+    // console.log("Route is created:", customRoute);
     requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
     routeView.setUpRouteList()
     routeView.renderRoute(customRoute, directionsService, directionsDisplay)
@@ -54,6 +58,18 @@ var app = function () {
   autocompleteHelper.takeUserInput(mainMap, originInput)
   autocompleteHelper.takeUserInput(mainMap, destinationInput)
 
+}
+
+var renderCheckBoxes = function (item, header) {
+  var waypointLabel = document.createElement("label")
+  waypointLabel.innerText = item.name;
+  header.appendChild(waypointLabel)
+
+  var waypoint = document.createElement("input");
+  waypoint.setAttribute("type", "checkbox");
+  waypoint.value = item.latLng;
+
+  waypointLabel.appendChild(waypoint)
 }
 
 var findRoute = function(value){
