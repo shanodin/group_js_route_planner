@@ -34,7 +34,7 @@ var app = function () {
   saveButton.addEventListener("click", function(){
     // console.log("Button clicked");
     var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
-    customRoute.addWaypoint(waypointSelect.value)
+    // customRoute.addWaypoint(waypointSelect.value)
     // console.log("Route is created:", customRoute);
     requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
     routeView.setUpRouteList()

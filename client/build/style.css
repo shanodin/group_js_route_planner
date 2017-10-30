@@ -45,3 +45,11 @@ h2 {
 #plan-route-btn {
   text-align: center;
 }
+
+#origin-input{
+  width: 300px;
+}
+
+#destination-input{
+  width: 300px;
+}
