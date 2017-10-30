@@ -53,9 +53,9 @@ db.routes.insert([
   },
 
   {
-    name: "InstaEdinburgh",
-    origin: {lat: 55.9519361, lng: -3.1917565},
-    destination: {lat: 55.9519361, lng: -3.1917565},
+    name: "Insta Edinburgh",
+    origin: {lat: 55.9519361, lng: -2.1917565},
+    destination: {lat: 55.9519361, lng: -1.1917565},
     waypoints:[
       {location: "National Museum of Scotland", stopover: true},
       {location: "Princes Street Gardens", stopover: true},
