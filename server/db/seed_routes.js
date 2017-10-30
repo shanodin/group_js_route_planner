@@ -1,6 +1,5 @@
 use route_planner;
-
-db.routes.drop()
+db.dropDatabase()
 
 db.routes.insert([
   {
@@ -76,4 +75,4 @@ db.routes.insert([
 
 ])
 
-db.routes.find()
+// db.routes.find()
