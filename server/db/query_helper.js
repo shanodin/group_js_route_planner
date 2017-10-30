@@ -17,7 +17,7 @@ QueryHelper.prototype.all = function (onQueryFinished) {
 };
 
 
-QueryHelper.prototype.save = function (onQueryFinished) {
+QueryHelper.prototype.save = function (routeToSave, onQueryFinished) {
   MongoClient.connect(this.url, function (err, db) {
     var routesCollection = db.collection(this.collection)
 
