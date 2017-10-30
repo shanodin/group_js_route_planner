@@ -1,4 +1,46 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
 #main-map {
   height: 500px;
   width: 100%;
+}
+
+.info-grid {
+  display: flex;
+  margin: 1em;
+}
+
+.grid-cell {
+  flex: 1;
+  padding: 1em;
+  margin: 1em;
+  border: 2px solid black;
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+#route-select-container {
+  text-align: center;
+  margin: 1em;
+}
+
+#header {
+  text-align: center;
+  height: 70px;
+  width: 100%;
+}
+
+.plan-route {
+  text-align: center; 
+}
+
+#plan-route-btn {
+  text-align: center;
 }

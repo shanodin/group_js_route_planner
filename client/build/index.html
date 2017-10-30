@@ -9,13 +9,35 @@
 </head>
 
   <body>
-    <h1>FISH AND CHIPS</h1>
+    <div id="header">
+      <h1>Walkable Edinburgh</h1>
+    </div>
+    <div id="route-select-container">
+      <select name="route-select" id="route-select">
+        <option selected disabled>Select a Route!</option>
+      </select>
+    </div>
     <div id="main-map"></div>
+    <div class="plan-route">
+      <button type="button" name="plan-route" id="plan-route-btn">Map Your Route</button>
+    </div>
+
+    <div class="info-grid">
+      <div class="grid-cell">
+        <h2>Where are you starting?</h2>
+        <input type="text" name="origin-input" id="origin-input" class="controls">
+      </div>
+      <div class="grid-cell">
+        <h2>What are your calling points?</h2>
+        <select id="waypoint-select"></select>
+      </div>
+      <div class="grid-cell">
+        <h2>Where do you want to end up?</h2>
+        <input type="text" name="destination-input" id="destination-input" class="controls">
+      </div>
+    </div>
+
+
     <div id="flickr-photo"></div>
-
-    <select name="route-select" id="route-select">
-      <option selected disabled>Select a Route!</option>
-    </select>
-
   </body>
 </html>
