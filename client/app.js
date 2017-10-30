@@ -4,6 +4,7 @@ var requestHelper = require('./helpers/request_helper.js')
 var dropdownMaker = require('./views/dropdownMaker.js')
 var flickrHelper = require('./helpers/flickr_helper.js')
 var routeView = require('./views/route_view.js')
+var autocompleteHelper = require('./helpers/autocomplete_helper.js')
 var listRoutes = []
 
 var app = function () {
@@ -21,6 +22,11 @@ var app = function () {
   routeSelect.addEventListener('change', function () {
     findRoute(this.value);
   })
+  var originInput = document.querySelector('#origin-input')
+  var destinationInput = document.querySelector('#destination-input')
+  autocompleteHelper.takeUserInput(mainMap, originInput)
+  autocompleteHelper.takeUserInput(mainMap, destinationInput)
+
 }
 
 var findRoute = function(value){
@@ -34,6 +40,7 @@ var findRoute = function(value){
     console.log('request sent',foundRoute[0]);
   })
 }
+
 
 
 
