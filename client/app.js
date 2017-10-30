@@ -13,7 +13,7 @@ var app = function () {
   directionsService = new google.maps.DirectionsService()
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap,
-    suppressMarkers: true
+    // suppressMarkers: true
   })
 
   var waypointSelect = document.querySelector("#waypoint-select")
