@@ -34,6 +34,7 @@ var app = function () {
     console.log("Route is created:", customRoute);
     requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
     routeView.setUpRouteList()
+    routeView.renderRoute(customRoute, directionsService, directionsDisplay)
   })
 
   // waypointSelect.addEventListener("change", function(){
