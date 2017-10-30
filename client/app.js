@@ -16,14 +16,40 @@ var app = function () {
     suppressMarkers: true
   })
 
+  var waypointSelect = document.querySelector("#waypoint-select")
+  var url = 'http://localhost:3000/api/waypoints'
+  requestHelper.getRequest(url, function (waypoints) {
+    dropdownMaker.setUpDropDown(waypoints, waypointSelect)
+  })
+
+  var routeName = document.querySelector("#route-name")
+  var originInput = document.querySelector("#origin-input")
+  var destinationInput = document.querySelector("#destination-input")
+
+  var saveButton = document.querySelector("#plan-route-btn")
+  saveButton.addEventListener("click", function(){
+    console.log("Button clicked");
+    var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
+    customRoute.addWaypoint(waypointSelect.value)
+    console.log("Route is created:", customRoute);
+    requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
+    routeView.setUpRouteList()
+  })
+
+  // waypointSelect.addEventListener("change", function(){
+  // })
+
+
+
   routeView.setUpRouteList()
 
   var routeSelect = document.querySelector('#route-select')
   routeSelect.addEventListener('change', function () {
     findRoute(this.value);
   })
-  var originInput = document.querySelector('#origin-input')
-  var destinationInput = document.querySelector('#destination-input')
+  //
+  // var originInput = document.querySelector('#origin-input')
+  // var destinationInput = document.querySelector('#destination-input')
   autocompleteHelper.takeUserInput(mainMap, originInput)
   autocompleteHelper.takeUserInput(mainMap, destinationInput)
 
@@ -31,7 +57,7 @@ var app = function () {
 
 var findRoute = function(value){
   var url = "http://localhost:3000/api/routes/" + value
-  requestHelper.find(url, function(foundRoute){
+  requestHelper.findRequest(url, function(foundRoute){
     routeView.renderRoute(foundRoute[0], directionsService, directionsDisplay)
     // console.log(foundRoute[0].origin) returns a latlong object
     //function to loop through route waypoints

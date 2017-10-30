@@ -19,6 +19,7 @@
     </div>
     <div id="main-map"></div>
     <div class="plan-route">
+      <input type="text" name="route-name" id="route-name" placeholder="Enter route name here" class="controls"/>
       <button type="button" name="plan-route" id="plan-route-btn">Map Your Route</button>
     </div>
 
@@ -29,7 +30,10 @@
       </div>
       <div class="grid-cell">
         <h2>What are your calling points?</h2>
-        <select id="waypoint-select"></select>
+        <select id="waypoint-select">
+          <option selected disabled>Select your waypoints!</option>
+        </select>
+
       </div>
       <div class="grid-cell">
         <h2>Where do you want to end up?</h2>

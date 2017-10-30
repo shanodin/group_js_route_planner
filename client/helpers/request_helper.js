@@ -14,7 +14,7 @@ var requestHelper = {}
   }
 
 
-  requestHelper.find = function (url, callback) {
+  requestHelper.findRequest = function (url, callback) {
     var xhr = new XMLHttpRequest()
     xhr.open('GET', url)
 
@@ -26,7 +26,7 @@ var requestHelper = {}
     xhr.send()
   }
 
-  requestHelper.postRequest = function (url, callback, payload) {
+  requestHelper.postRequest = function (url, payload) {
     var xhr = new XMLHttpRequest()
     xhr.open('POST', url)
 
