@@ -6,6 +6,7 @@ var flickrHelper = require('./helpers/flickr_helper.js')
 var routeView = require('./views/route_view.js')
 var autocompleteHelper = require('./helpers/autocomplete_helper.js')
 var listRoutes = []
+var weatherHelper = require('./helpers/weather_helper')
 
 var app = function () {
   var customRoute = new Route (undefined, undefined, undefined)
@@ -18,27 +19,27 @@ var app = function () {
     suppressMarkers: true
   })
   // create the list of waypoints to choose from
-  var waypointSelect = document.querySelector("#waypoint-select")
+  // var waypointSelect = document.querySelector("#waypoint-select")
   var url = 'http://localhost:3000/api/waypoints'
   requestHelper.getRequest(url, function (waypoints) {
     var ul = document.querySelector("#waypoint-list")
     waypoints.forEach(function(waypoint){
-    renderCheckBoxes(waypoint, ul)
+      renderCheckBoxes(waypoint, ul)
     })
   })
   // creating a custom route
-  var routeName = document.querySelector("#route-name")
-  var originInput = document.querySelector("#origin-input")
-  var destinationInput = document.querySelector("#destination-input")
-  var saveButton = document.querySelector("#plan-route-btn")
-  saveButton.addEventListener("click", function(){
+  var routeName = document.querySelector('#route-name')
+  var originInput = document.querySelector('#origin-input')
+  var destinationInput = document.querySelector('#destination-input')
+  var saveButton = document.querySelector('#plan-route-btn')
+  saveButton.addEventListener('click', function () {
     // console.log("Button clicked");
     customRoute.name = routeName.value
     customRoute.origin = originInput.value
     customRoute.destination = destinationInput.value
     // var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
     // console.log("Route is created:", customRoute);
-    requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
+    requestHelper.postRequest('http://localhost:3000/api/routes', customRoute)
     routeView.setUpRouteList()
     routeView.renderRoute(customRoute, directionsService, directionsDisplay)
   })
@@ -46,7 +47,7 @@ var app = function () {
   routeView.setUpRouteList()
   var routeSelect = document.querySelector('#route-select')
   routeSelect.addEventListener('change', function () {
-    findRoute(this.value);
+    findRoute(this.value)
   })
   // add the cool autocomplete thing
   // var originInput = document.querySelector('#origin-input')
@@ -56,39 +57,33 @@ var app = function () {
 
   // render the boxes
   var renderCheckBoxes = function (item, ul) {
-    var li = document.createElement("li")
-    var waypointLabel = document.createElement("label")
-    waypointLabel.innerText = item.name;
+    var li = document.createElement('li')
+    var waypointLabel = document.createElement('label')
+    waypointLabel.innerText = item.name
     li.appendChild(waypointLabel)
-    var box = document.createElement("input");
-    box.setAttribute("type", "checkbox");
-    box.value = item.latLng;
-    box.addEventListener('change', function(){
-      // console.log(item);
+    var box = document.createElement('input')
+    box.setAttribute('type', 'checkbox')
+    box.value = item.latLng
+    box.addEventListener('change', function () {
       var waypoint = "location: " + item.name
-      console.log(waypoint);
       customRoute.addWaypoint(waypoint)
     })
     waypointLabel.appendChild(box)
     ul.appendChild(li)
   }
+  weatherHelper.getWeather()
 }
 
-var findRoute = function(value){
-  var url = "http://localhost:3000/api/routes/" + value
-  requestHelper.findRequest(url, function(foundRoute){
+var findRoute = function (value) {
+  var url = 'http://localhost:3000/api/routes/' + value
+  requestHelper.findRequest(url, function (foundRoute) {
     routeView.renderRoute(foundRoute[0], directionsService, directionsDisplay)
     // console.log(foundRoute[0].origin) returns a latlong object
-    //function to loop through route waypoints
-    //compare to database objects
+    // function to loop through route waypoints
+    // compare to database objects
     // map new array and add markers with appropriate info bubble
-    console.log('request sent',foundRoute[0]);
+    console.log('request sent', foundRoute[0])
   })
 }
-
-
-
-
-
 
 window.addEventListener('DOMContentLoaded', app)

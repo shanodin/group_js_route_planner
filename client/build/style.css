@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 h2 {
@@ -26,14 +27,15 @@ h2 {
   border-radius: 6px;
 }
 
-#route-select-container {
+.above-map-container {
+  display: flex;
   text-align: center;
   margin: 1em;
 }
 
 #header {
   text-align: center;
-  height: 70px;
+  height: 50px;
   width: 100%;
 }
 
@@ -46,9 +48,18 @@ h2 {
 }
 
 #origin-input{
-  width: 300px;
+  width: 100%;
 }
 
 #destination-input{
-  width: 300px;
+  width: 100%;
+}
+
+.above-map-box {
+  flex: 1;
+  padding: 1em;
+  margin: 1em;
+  border: 2px solid black;
+  background-color: transparent;
+  border-radius: 6px;
 }
