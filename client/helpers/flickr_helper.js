@@ -2,10 +2,12 @@
 
 var flickrHelper = {
 
-  request: function (tag) {
+  request: function (name) {
+    var tag = this.tagMaker(name);
+
     var url = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=56a4f5d0179598fb68c82a2f0973331f&text=" + tag + "&format=json&nojsoncallback=1"
     var request = new XMLHttpRequest()
-
+    console.log("request url", url);
     request.open("GET", url)
 
     request.addEventListener( "load", function () {
@@ -21,10 +23,11 @@ var flickrHelper = {
     request.send()
   },
 
-  parseURL: function (tag) {
-    //this function will take in photo information and supply the imageURL in the listener function.
+  tagMaker: function (name) {
+    var step1 = name.replace(" ", "")
+    var step2 = step1.replace("'", "")
+    return step2.toLowerCase();
   }
-
 
 }
 

@@ -58,6 +58,8 @@ var app = function () {
   autocompleteHelper.takeUserInput(mainMap, originInput)
   autocompleteHelper.takeUserInput(mainMap, destinationInput)
 
+  flickrHelper.request("The Writers' Museum");
+
 }
 
 var renderCheckBoxes = function (item, header) {
