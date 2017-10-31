@@ -65,7 +65,7 @@ db.waypoints.insert([
     notes: "Street performers, the oldest pub in Edinburgh, the former gallows, and a great place to get lost."
   },
   {
-    name: "Vennel",
+    name: "Vennel, Edinburgh",
     type: "Views",
     latLng: {lat: 55.9463136, lng: -3.1993011},
     notes: "One of the most Instagrammable places in the city."
@@ -83,7 +83,7 @@ db.waypoints.insert([
     notes: "One of the most Instagrammable places in the city."
   },
   {
-    name: "Victoria Street",
+    name: "National Library Edinburgh",
     type: "Instagrammable",
     latLng: {lat: 55.948718, lng: -3.1956766},
     notes: "One of the most Instagrammable places in the city.  Great food and bars."
@@ -113,7 +113,7 @@ db.waypoints.insert([
     notes: "One of the most Instagrammable places in the city."
   },
   {
-    name: "Royal Botanic Gardens",
+    name: "Royal Botanic Garden Edinburgh",
     type: "Gardens",
     latLng: {lat: 55.9652527, lng: -3.2114196 },
     notes: "Beautiful free gardens; you'll occasionally see Quidditch."
@@ -131,43 +131,43 @@ db.waypoints.insert([
     notes: "The largest monument to a writer in the world."
   },
   {
-    name: "Artisan Coffee",
+    name: "Artisan Roast Broughton Street",
     type: "Refreshment",
     latLng: {lat: 55.9582853, lng: -3.1916766 },
     notes: "The baristas are a bit stuck up, but that's because they have the best coffee in the city."
   },
   {
-    name: "Barony Pub",
+    name: "Barony Bar, Edinburgh",
     type: "Refreshment",
     latLng: {lat: 55.9582853, lng: -3.1916766 },
     notes: "Great old pub."
   },
   {
-    name: "Guildford Arms Pub",
+    name: "Guildford Arms",
     type: "Refreshment",
     latLng: {lat: 55.9536723, lng: -3.1926977 },
     notes: "Historic pub in the city centre."
   },
   {
-    name: "The Olive Branch",
+    name: "The Olive Branch Broughton Street",
     type: "Refreshment",
     latLng: {lat: 55.9585444, lng: -3.1919068 },
     notes: "A wonderful restaurant."
   },
   {
-    name: "Oink",
+    name: "Oink Hog Roast",
     type: "Refreshment",
     latLng: {lat: 55.948607, lng: -3.1964291 },
     notes: "The best pulled pork you'll ever have."
   },
   {
-    name: "Henderson's",
+    name: "Henderson's Vegan Restaurant",
     type: "Refreshment",
     latLng: {lat: 55.954271, lng: -3.2001623 },
     notes: "The center of the vegetarian/vegan community, and healthy eating."
   },
   {
-    name: "The Scottish National Portrait Gallery",
+    name: "Scottish National Portrait Gallery",
     type: "Museum",
     latLng: {lat: 55.955501, lng: -3.1957337 },
     notes: "Brilliant, cutting edge photography gallery."
@@ -179,7 +179,7 @@ db.waypoints.insert([
     notes: "A wonderful place if you like words."
   },
   {
-    name: "National War Museum",
+    name: "National War Museum Edinburgh",
     type: "Museum",
     latLng: {lat: 55.9488879, lng: -3.2039589 },
     notes: "We included it because we needed another museum on the list. Has anyone actually been here?"
@@ -191,7 +191,7 @@ db.waypoints.insert([
     notes: "Grisly.  Gory.  Great."
   },
   {
-    name: "Scottish National Gallery",
+    name: "Scottish National Gallery, The Mound",
     type: "Museum",
     latLng: {lat: 55.950902, lng: -3.1978749},
     notes: "Great gallery."

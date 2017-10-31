@@ -8,70 +8,70 @@ var autocompleteHelper = require('./helpers/autocomplete_helper.js')
 var listRoutes = []
 
 var app = function () {
+  var customRoute = new Route (undefined, undefined, undefined)
+  // create the map
   var mapDiv = document.querySelector('div#main-map')
   var mainMap = new MapWrapper(mapDiv)
   directionsService = new google.maps.DirectionsService()
   directionsDisplay = new google.maps.DirectionsRenderer({
     map: mainMap.googleMap,
-    // suppressMarkers: true
+    suppressMarkers: true
   })
-
+  // create the list of waypoints to choose from
   var waypointSelect = document.querySelector("#waypoint-select")
   var url = 'http://localhost:3000/api/waypoints'
   requestHelper.getRequest(url, function (waypoints) {
-    // dropdownMaker.setUpDropDown(waypoints, waypointSelect)
-  var waypointHTwo = document.querySelector("#waypoint-h2")
+    var ul = document.querySelector("#waypoint-list")
     waypoints.forEach(function(waypoint){
-    renderCheckBoxes(waypoint, waypointHTwo)
+    renderCheckBoxes(waypoint, ul)
     })
   })
-
+  // creating a custom route
   var routeName = document.querySelector("#route-name")
   var originInput = document.querySelector("#origin-input")
   var destinationInput = document.querySelector("#destination-input")
-
   var saveButton = document.querySelector("#plan-route-btn")
   saveButton.addEventListener("click", function(){
     // console.log("Button clicked");
-    var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
-    // customRoute.addWaypoint(waypointSelect.value)
+    customRoute.name = routeName.value
+    customRoute.origin = originInput.value
+    customRoute.destination = destinationInput.value
+    // var customRoute = new Route(routeName.value, originInput.value, destinationInput.value)
     // console.log("Route is created:", customRoute);
     requestHelper.postRequest("http://localhost:3000/api/routes", customRoute);
     routeView.setUpRouteList()
     routeView.renderRoute(customRoute, directionsService, directionsDisplay)
   })
-
-  // waypointSelect.addEventListener("change", function(){
-  // })
-
-
-
+  // make the routes dropdown
   routeView.setUpRouteList()
-
   var routeSelect = document.querySelector('#route-select')
   routeSelect.addEventListener('change', function () {
     findRoute(this.value);
   })
-  //
+  // add the cool autocomplete thing
   // var originInput = document.querySelector('#origin-input')
   // var destinationInput = document.querySelector('#destination-input')
   autocompleteHelper.takeUserInput(mainMap, originInput)
   autocompleteHelper.takeUserInput(mainMap, destinationInput)
 
-  flickrHelper.request("The Writers' Museum");
-
-}
-
-var renderCheckBoxes = function (item, header) {
-  var waypointLabel = document.createElement("label")
-  waypointLabel.innerText = item.name;
-  header.appendChild(waypointLabel)
-
-  var waypoint = document.createElement("input");
-  waypoint.setAttribute("type", "checkbox");
-  waypoint.value = item.latLng;
-
-  waypointLabel.appendChild(waypoint)
+  // render the boxes
+  var renderCheckBoxes = function (item, ul) {
+    var li = document.createElement("li")
+    var waypointLabel = document.createElement("label")
+    waypointLabel.innerText = item.name;
+    li.appendChild(waypointLabel)
+    var box = document.createElement("input");
+    box.setAttribute("type", "checkbox");
+    box.value = item.latLng;
+    box.addEventListener('change', function(){
+      // console.log(item);
+      var waypoint = "location: " + item.name
+      console.log(waypoint);
+      customRoute.addWaypoint(waypoint)
+    })
+    waypointLabel.appendChild(box)
+    ul.appendChild(li)
+  }
 }
 
 var findRoute = function(value){
