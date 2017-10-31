@@ -6,9 +6,9 @@ var Route = function (name, origin, destination) {
   this.optimizeWaypoints = true
 }
 
-Route.prototype.addWaypoint = function (location) {
+Route.prototype.addWaypoint = function (locationInfo) {
   var waypoint = {
-    location: location,
+    location: locationInfo,
     stopover: true
   }
   this.waypoints.push(waypoint)
