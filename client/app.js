@@ -72,7 +72,7 @@ var app = function () {
       mainMap.addWaypointMarker(item.name)
       customRoute.addWaypoint(waypoint)
     } else{
-      // mainMap.clearMarker(item.name)
+      mainMap.clearMarker(item.name)
       var filteredArray = customRoute.waypoints.filter(function (waypoint) {
         return waypoint.location !== item.name
       })

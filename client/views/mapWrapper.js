@@ -68,8 +68,19 @@ MapWrapper.prototype.enhancedWindow = function (object) {
   return infoWindow
 };
 
-MapWrapper.prototype.clearMarker = function () {
-    this.markers = []
+MapWrapper.prototype.clearMarker = function (waypointName) {
+  url = "http://localhost:3000/api/waypoints/" + waypointName
+  requestHelper.getRequest(url, function (waypoint) {
+    var filteredArray = this.markers.filter(function (marker) {
+      console.log("waypoint:", waypoint[0].latLng.lat);
+      console.log("marker:", marker);
+      if(marker.position.lat() === waypoint[0].latLng.lat){
+        marker.setMap(null)
+      }
+      return marker.position.lat() !== waypoint[0].latLng.lat
+    })
+    this.markers = filteredArray;
+  }.bind(this))
 };
 // MapWrapper.prototype.iconSorter = function (object) {
 //   flickrHelper.request(object.name)
