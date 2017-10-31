@@ -63,12 +63,27 @@ var app = function () {
     var box = document.createElement("input");
     box.setAttribute("type", "checkbox");
     box.value = item.latLng;
-    box.addEventListener('change', function(){
+    box.addEventListener('change', function(event){
       // console.log(item);
-      var waypoint = "location: " + item.name
-      console.log(waypoint);
-      customRoute.addWaypoint(waypoint)
+      var waypoint = item.name
+
+
+      if(this.checked){
       mainMap.addWaypointMarker(item.name)
+      customRoute.addWaypoint(waypoint)
+    } else{
+      // mainMap.clearMarker(item.name)
+      var filteredArray = customRoute.waypoints.filter(function (waypoint) {
+        return waypoint.location !== item.name
+      })
+      customRoute.waypoints = filteredArray
+
+      //search custom routes waypoint array
+      //compare the waypoints location to the item.name(should return same)
+      //get the index and use the index to splice out that waypoint from the array
+
+    }
+
     })
     waypointLabel.appendChild(box)
     ul.appendChild(li)

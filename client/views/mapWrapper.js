@@ -41,6 +41,7 @@ MapWrapper.prototype.addWaypointMarker = function (waypointName) {
         infoWindow.open(marker.map, marker);
       })
       this.markers.push(marker)
+      console.log(marker.position.lat());
       console.log(this.markers);
     }.bind(this))
 }
@@ -67,5 +68,12 @@ MapWrapper.prototype.enhancedWindow = function (object) {
   return infoWindow
 };
 
+MapWrapper.prototype.clearMarker = function () {
+    this.markers = []
+};
+// MapWrapper.prototype.iconSorter = function (object) {
+//   flickrHelper.request(object.name)
+//
+// };
 
 module.exports = MapWrapper
