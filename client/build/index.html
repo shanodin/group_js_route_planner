@@ -12,10 +12,11 @@
     <div id="header">
       <h1>Walkable Edinburgh</h1>
     </div>
-    <div id="route-select-container">
-      <select name="route-select" id="route-select">
-
-      </select>
+    <div class="above-map-container">
+      <div class ="above-map-box" id="route-select-div">
+      <select name="route-select" id="route-select"></select>
+      </div>
+      <div class ="above-map-box" id="weather"></div>
     </div>
     <div id="main-map"></div>
     <div class="plan-route">
@@ -31,9 +32,6 @@
       <div id="waypoint-grid-cell" class="grid-cell">
         <h2 id="waypoint-h2">What are your calling points?</h2>
         <ul id="waypoint-list"></ul>
-        <!-- <select id="waypoint-select">
-          <option selected disabled>Select your waypoints!</option>
-        </select> -->
       </div>
       <div class="grid-cell">
         <h2>Where do you want to end up?</h2>
