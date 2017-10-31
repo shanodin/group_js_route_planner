@@ -1,7 +1,7 @@
 var MapWrapper = function (container) {
   this.googleMap = new google.maps.Map(container, {
     center: {lat: 55.949768, lng: -3.197314},
-    zoom: 15,
+    zoom: 14,
     styles: [
   {
     "elementType": "geometry",
