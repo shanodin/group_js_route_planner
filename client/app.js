@@ -68,6 +68,7 @@ var app = function () {
       var waypoint = "location: " + item.name
       console.log(waypoint);
       customRoute.addWaypoint(waypoint)
+      mainMap.addWaypointMarker(item.name)
     })
     waypointLabel.appendChild(box)
     ul.appendChild(li)

@@ -11,6 +11,7 @@ var MapWrapper = function (container) {
     styles: styling
   })
   this.googleMap.setMapTypeId('roadmap')
+  // this.addWaypointMarker = this.addWaypointMarker.bind(this)
 }
 
 MapWrapper.prototype.addMarker = function (object) {
@@ -24,31 +25,47 @@ MapWrapper.prototype.addMarker = function (object) {
 
   })
   this.markers.push(marker);
+  console.log(this.markers);
 };
 
 
-
 MapWrapper.prototype.addWaypointMarker = function (waypointName) {
-    url = "http://localhost:3000/api/waypoints" + waypointName
+    url = "http://localhost:3000/api/waypoints/" + waypointName
     requestHelper.getRequest(url, function(waypoint) {
-      var marker = new google.maps.Mark({
-        position: waypoint.latLng,
-        // icon: //function to get icon.
+      var marker = new google.maps.Marker({
+        position: waypoint[0].latLng,
         map: this.googleMap
       })
-      // var infoWindow = this.createInfoWindow(waypoint)
+      var infoWindow = this.createInfoWindow(waypoint[0])
+      marker.addListener('click', function() {
+        infoWindow.open(marker.map, marker);
+      })
+      this.markers.push(marker)
+      console.log(this.markers);
     }.bind(this))
 }
 
 MapWrapper.prototype.createInfoWindow = function (object) {
+  if(object.notes) {
+    return this.enhancedWindow(object)
+    } else {
+    return this.standardWindow(object)
+  }
+}
+
+MapWrapper.prototype.standardWindow = function (object) {
   var infoWindow = new google.maps.InfoWindow({
     content: "<b>" + object.name + "</b>"
   })
-
-
   return infoWindow
-}
+};
 
+MapWrapper.prototype.enhancedWindow = function (object) {
+  var infoWindow = new google.maps.InfoWindow({
+  content: "<div><b>" + object.name + "</b><br>" + object.notes + "</div>"
+  })
+  return infoWindow
+};
 
 
 module.exports = MapWrapper
