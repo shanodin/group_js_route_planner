@@ -12,7 +12,8 @@ var autocompleteHelper = {
     var autocomplete = new google.maps.places.Autocomplete(inputBox, options)
     autocomplete.addListener('place_changed', function () {
       var result = autocomplete.getPlace().geometry.location
-      mainMap.addMarker(result)
+      var coords = {lat: result.lat(), lng: result.lng()}
+      mainMap.addMarker(coords)
     })
   }
 
