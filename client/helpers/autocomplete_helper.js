@@ -11,9 +11,13 @@ var autocompleteHelper = {
     }
     var autocomplete = new google.maps.places.Autocomplete(inputBox, options)
     autocomplete.addListener('place_changed', function () {
-      var result = autocomplete.getPlace().geometry.location
-      var coords = {lat: result.lat(), lng: result.lng()}
-      mainMap.addMarker(coords)
+      var result = autocomplete.getPlace()
+      var objectForMarkerification = {
+        name: result.name,
+        latLng: {lat: result.geometry.location.lat(), lng: result.geometry.location.lng()}
+      }
+      console.log(result);
+      mainMap.addMarker(objectForMarkerification)
     })
   }
 
