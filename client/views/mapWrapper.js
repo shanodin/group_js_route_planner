@@ -1,271 +1,88 @@
+var styling = require("./map_styles.js")
+var requestHelper = require("../helpers/request_helper.js")
+var flickrHelper = require("../helpers/flickr_helper.js")
+
+
 var MapWrapper = function (container) {
+  this.markers = [],
   this.googleMap = new google.maps.Map(container, {
     center: {lat: 55.949768, lng: -3.197314},
     zoom: 14,
-    styles: [
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#523735"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#c9b2a6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#dcd2be"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ae9e90"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#93817c"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#a5b076"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#447530"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#fdfcf8"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f8c967"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#e9bc62"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#e98d58"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#db8555"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#806b63"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8f7d77"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#b9d3c2"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#92998d"
-      }
-    ]
-  }
-]
+    styles: styling
   })
   this.googleMap.setMapTypeId('roadmap')
+  // this.addWaypointMarker = this.addWaypointMarker.bind(this)
 }
 
-MapWrapper.prototype.addMarker = function (coords) {
+MapWrapper.prototype.addMarker = function (object) {
   var marker = new google.maps.Marker({
-    position: coords,
+    position: object.latLng,
     map: this.googleMap
   })
-  var infoWindow = this.createInfoWindow(coords)
+  var infoWindow = this.createInfoWindow(object)
     marker.addListener('click', function() {
     infoWindow.open(marker.map, marker);
 
   })
-  // this.markers.push(marker);
+  this.markers.push(marker);
+  console.log(this.markers);
 };
 
-MapWrapper.prototype.createInfoWindow = function (coords) {
-  var infoWindow = new google.maps.InfoWindow({
-    content: "Latitude: " + coords.lat + " Longitude: " + coords.lng
-    })
-  return infoWindow
+
+MapWrapper.prototype.addWaypointMarker = function (waypointName) {
+    url = "http://localhost:3000/api/waypoints/" + waypointName
+    requestHelper.getRequest(url, function(waypoint) {
+      var marker = new google.maps.Marker({
+        position: waypoint[0].latLng,
+        map: this.googleMap
+      })
+      var infoWindow = this.createInfoWindow(waypoint[0])
+      marker.addListener('click', function() {
+        infoWindow.open(marker.map, marker);
+      })
+      this.markers.push(marker)
+      console.log(marker.position.lat());
+      console.log(this.markers);
+    }.bind(this))
 }
+
+MapWrapper.prototype.createInfoWindow = function (object) {
+  if(object.notes) {
+    return this.enhancedWindow(object)
+    } else {
+    return this.standardWindow(object)
+  }
+}
+
+MapWrapper.prototype.standardWindow = function (object) {
+  var infoWindow = new google.maps.InfoWindow({
+    content: "<b>" + object.name + "</b>"
+  })
+  return infoWindow
+};
+
+MapWrapper.prototype.enhancedWindow = function (object) {
+  var infoWindow = new google.maps.InfoWindow({
+  content: "<div><b>" + object.name + "</b><br>" + object.notes + "</div>"
+  })
+  return infoWindow
+};
+
+MapWrapper.prototype.clearMarker = function (waypointName) {
+  url = "http://localhost:3000/api/waypoints/" + waypointName
+  requestHelper.getRequest(url, function (waypoint) {
+    var filteredArray = this.markers.filter(function (marker) {
+      if(marker.position.lat() === waypoint[0].latLng.lat){
+        marker.setMap(null)
+      }
+      return marker.position.lat() !== waypoint[0].latLng.lat
+    })
+    this.markers = filteredArray;
+  }.bind(this))
+};
+// MapWrapper.prototype.iconSorter = function (object) {
+//   flickrHelper.request(object.name)
+//
+// };
 
 module.exports = MapWrapper

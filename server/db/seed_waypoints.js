@@ -6,7 +6,7 @@ db.waypoints.insert([
   {
     name: "Edinburgh Castle",
     type: "Cultural",
-    latlng: {lat: 55.9485977,lng: -3.2021022},
+    latLng: {lat: 55.9485977,lng: -3.2021022},
     notes: "Impressive, but costly."
   },
   {
