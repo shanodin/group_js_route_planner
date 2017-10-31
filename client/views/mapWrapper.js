@@ -72,8 +72,6 @@ MapWrapper.prototype.clearMarker = function (waypointName) {
   url = "http://localhost:3000/api/waypoints/" + waypointName
   requestHelper.getRequest(url, function (waypoint) {
     var filteredArray = this.markers.filter(function (marker) {
-      console.log("waypoint:", waypoint[0].latLng.lat);
-      console.log("marker:", marker);
       if(marker.position.lat() === waypoint[0].latLng.lat){
         marker.setMap(null)
       }
