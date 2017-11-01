@@ -27,12 +27,6 @@ h2 {
   border-radius: 6px;
 }
 
-.above-map-container {
-  display: flex;
-  text-align: center;
-  margin: 1em;
-}
-
 #header {
   text-align: center;
   height: 50px;
@@ -55,6 +49,12 @@ h2 {
   width: 100%;
 }
 
+.above-map-container {
+  display: flex;
+  text-align: center;
+  margin: 1em;
+}
+
 .above-map-box {
   flex: 1;
   padding: 1em;
@@ -62,4 +62,19 @@ h2 {
   border: 2px solid black;
   background-color: transparent;
   border-radius: 6px;
+}
+
+.above-map-box#weather {
+  display: flex;
+}
+
+.above-map-box-inner#weather-canvas-div {
+  flex: 1;
+  float: left;
+  padding-left: 50px;
+}
+
+.above-map-box-inner#weather-text-div {
+  flex: 2;
+  float: right;
 }

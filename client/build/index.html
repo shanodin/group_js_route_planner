@@ -12,12 +12,18 @@
     <div id="header">
       <h1>Walkable Edinburgh</h1>
     </div>
+
     <div class="above-map-container">
-      <div class ="above-map-box" id="route-select-div">
-      <select name="route-select" id="route-select"></select>
+      <div class="above-map-box" id="route-select-div">
+        <select name="route-select" id="route-select"></select>
       </div>
-      <div class ="above-map-box" id="weather"></div>
+      <div class="above-map-box" id="weather">
+        <h3>Current Weather:</h3>
+        <div class="above-map-box-inner" id="weather-canvas-div"><canvas id="weather-canvas" width="64" height="64"></canvas></div>
+        <div class="above-map-box-inner" id="weather-text-div"><p id="weather-text"></p></div>
+      </div>
     </div>
+
     <div id="main-map"></div>
     <div class="plan-route">
       <input type="text" name="route-name" id="route-name" placeholder="Enter route name here" class="controls"/>
@@ -41,5 +47,6 @@
 
 
     <div id="flickr-photo"></div>
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
   </body>
 </html>
