@@ -4,15 +4,18 @@ var waypointViewer = {
   getWaypointsFromDB: function (map, customRoute) {
     var url = 'http://localhost:3000/api/waypoints'
     requestHelper.getRequest(url, function (waypoints) {
-      var ul = document.querySelector("#waypoint-list")
+
       waypoints.forEach(function(waypoint){
-        renderCheckBoxes(waypoint, ul, map, customRoute)
+        renderCheckBoxes(waypoint, map, customRoute)
       })
     })
   }
 }
 
- var renderCheckBoxes = function (item, ul, map, customRoute) {
+ var renderCheckBoxes = function (item, map, customRoute) {
+  var culturalUL = document.querySelector("#waypoint-list-cultural")
+  var viewsUL = document.querySelector("#waypoint-list-views")
+  var foodUL = document.querySelector("#waypoint-list-food")
   var li = document.createElement('li')
   var waypointLabel = document.createElement('label')
   waypointLabel.innerText = item.name
@@ -22,8 +25,6 @@ var waypointViewer = {
   box.value = item.latLng;
   box.addEventListener('change', function(event){
     var waypoint = item.name
-
-
     if(this.checked){
     map.addWaypointMarker(item.name)
     customRoute.addWaypoint(waypoint)
@@ -35,7 +36,20 @@ var waypointViewer = {
     customRoute.waypoints = filteredArray
   }})
   waypointLabel.appendChild(box)
-  ul.appendChild(li)
+
+  switch (item.type) {
+    case "Cultural":
+      culturalUL.appendChild(li)
+      break;
+
+    case "Views":
+    viewsUL.appendChild(li)
+      break;
+
+    case "Refreshment":
+    foodUL.appendChild(li)
+      break;
+    }
 }
 
 

@@ -8,6 +8,7 @@ var routeView = require('./views/route_view.js')
 var autocompleteHelper = require('./helpers/autocomplete_helper.js')
 var weatherHelper = require('./helpers/weather_helper.js')
 var saveButtonListener = require('./helpers/save_button_helper.js')
+var waypointButtonListeners = require('./views/waypoint_type_viewer.js')
 
 var app = function () {
   var customRoute = new Route (undefined, undefined, undefined)
@@ -39,6 +40,9 @@ var app = function () {
 
   waypointViewer.getWaypointsFromDB(mainMap, customRoute)
   weatherHelper.getWeather()
+
+  waypointButtonListeners()
+
 }
 
 var findRoute = function (value) {
