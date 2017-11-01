@@ -5,14 +5,14 @@ var waypointViewer = {
     var url = 'http://localhost:3000/api/waypoints'
     requestHelper.getRequest(url, function (waypoints) {
 
-      waypoints.forEach(function(waypoint){
+      waypoints.forEach(function (waypoint) {
         renderCheckBoxes(waypoint, map, customRoute)
       })
     })
   }
 }
 
- var renderCheckBoxes = function (item, map, customRoute) {
+var renderCheckBoxes = function (item, map, customRoute) {
   var culturalUL = document.querySelector("#waypoint-list-cultural")
   var viewsUL = document.querySelector("#waypoint-list-views")
   var foodUL = document.querySelector("#waypoint-list-food")
@@ -20,38 +20,38 @@ var waypointViewer = {
   var waypointLabel = document.createElement('label')
   waypointLabel.innerText = item.name
   li.appendChild(waypointLabel)
-  var box = document.createElement("input");
-  box.setAttribute("type", "checkbox");
-  box.value = item.latLng;
-  box.addEventListener('change', function(event){
+  var box = document.createElement('input')
+  box.setAttribute('type', 'checkbox')
+  box.setAttribute('id', 'checkbox')
+  box.value = item.latLng
+  box.addEventListener('change', function (event) {
     var waypoint = item.name
-    if(this.checked){
-    map.addWaypointMarker(item.name)
-    customRoute.addWaypoint(waypoint)
-  } else{
-    map.clearMarker(item.name)
-    var filteredArray = customRoute.waypoints.filter(function (waypoint) {
-      return waypoint.location !== item.name
-    })
-    customRoute.waypoints = filteredArray
-  }})
+    if (this.checked) {
+      map.addWaypointMarker(item.name)
+      customRoute.addWaypoint(waypoint)
+    } else {
+      map.clearMarker(item.name)
+      var filteredArray = customRoute.waypoints.filter(function (waypoint) {
+        return waypoint.location !== item.name
+      })
+      customRoute.waypoints = filteredArray
+    }
+  })
   waypointLabel.appendChild(box)
 
   switch (item.type) {
     case "Cultural":
       culturalUL.appendChild(li)
-      break;
+      break
 
     case "Views":
-    viewsUL.appendChild(li)
-      break;
+      viewsUL.appendChild(li)
+      break
 
     case "Refreshment":
-    foodUL.appendChild(li)
-      break;
-    }
+      foodUL.appendChild(li)
+      break
+  }
 }
-
-
 
 module.exports = waypointViewer
