@@ -10,7 +10,7 @@ db.waypoints.insert([
     notes: "Impressive, but costly."
   },
   {
-    name: "The Royal Scots Greys Monument",
+    name: "Royal Scots Greys Monument",
     type: "Cultural",
     latLng: {lat: 55.9513882, lng: -3.2015284},
     notes: "Good views."
@@ -34,7 +34,7 @@ db.waypoints.insert([
     notes: "Named as the best pub in Scotland; impressive selection of whiskys."
   },
   {
-    name: "David Hume Statue on royal mile",
+    name: "David Hume Statue on Royal Mile",
     type: "Cultural",
     latLng: {lat: 55.9495668, lng: -3.1946293},
     notes: "Great place to meet."
@@ -54,7 +54,7 @@ db.waypoints.insert([
   },
   {
     name: "Princes Street Gardens",
-    type: "Garden",
+    type: "Views",
     latLng: {lat: 55.949558, lng: -3.2008877},
     notes: "Lovely gardens and views of the castle."
   },
@@ -84,37 +84,37 @@ db.waypoints.insert([
   },
   {
     name: "National Library Edinburgh",
-    type: "Instagrammable",
+    type: "Culture",
     latLng: {lat: 55.948718, lng: -3.1956766},
     notes: "One of the most Instagrammable places in the city.  Great food and bars."
   },
   {
     name: "New College, The University of Edinburgh",
-    type: "Instagrammable",
+    type: "Views",
     latLng: {lat: 55.94948, lng: -3.1973878},
     notes: "The center of higher education in Edinburgh."
   },
   {
     name: "Circus Lane",
-    type: "Instagrammable",
+    type: "Views",
     latLng: {lat: 55.9581228, lng: -3.2071623},
     notes: "One of the most Instagrammable places in the city."
   },
   {
     name: "Dean Village",
-    type: "Instagrammable",
+    type: "Views",
     latLng: {lat: 55.9526915, lng: -3.2216696 },
     notes: "One of the most Instagrammable places in the city."
   },
   {
     name: "Belford Mews",
-    type: "Instagrammable",
+    type: "Views",
     latLng: {lat: 55.9516549, lng: -3.2219253 },
     notes: "One of the most Instagrammable places in the city."
   },
   {
     name: "Royal Botanic Garden Edinburgh",
-    type: "Gardens",
+    type: "Views",
     latLng: {lat: 55.9652527, lng: -3.2114196 },
     notes: "Beautiful free gardens; you'll occasionally see Quidditch."
   },
@@ -126,7 +126,7 @@ db.waypoints.insert([
   },
   {
     name: "Scott Monument",
-    type: "Monument",
+    type: "Views",
     latLng: {lat: 55.952381, lng: -3.1954628 },
     notes: "The largest monument to a writer in the world."
   },
@@ -168,31 +168,31 @@ db.waypoints.insert([
   },
   {
     name: "Scottish National Portrait Gallery",
-    type: "Museum",
+    type: "Culture",
     latLng: {lat: 55.955501, lng: -3.1957337 },
     notes: "Brilliant, cutting edge photography gallery."
   },
   {
     name: "The Writers' Museum",
-    type: "Museum",
+    type: "Culture",
     latLng: {lat: 55.9496415, lng: -3.1960525 },
     notes: "A wonderful place if you like words."
   },
   {
     name: "National War Museum Edinburgh",
-    type: "Museum",
+    type: "Culture",
     latLng: {lat: 55.9488879, lng: -3.2039589 },
-    notes: "We included it because we needed another museum on the list. Has anyone actually been here?"
+    notes: "Within the walls of Edinburgh Castle the National War Museum tells the story of battles lost and won."
   },
   {
     name: "Surgeons' Hall Museums",
-    type: "Museum",
+    type: "Culture",
     latLng: {lat: 55.94667, lng: -3.1869197 },
-    notes: "Grisly.  Gory.  Great."
+    notes: "Grisly. Gory. Great."
   },
   {
     name: "Scottish National Gallery, The Mound",
-    type: "Museum",
+    type: "Culture",
     latLng: {lat: 55.950902, lng: -3.1978749},
     notes: "Great gallery."
   },

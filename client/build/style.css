@@ -27,12 +27,6 @@ h2 {
   border-radius: 6px;
 }
 
-.above-map-container {
-  display: flex;
-  text-align: center;
-  margin: 1em;
-}
-
 #header {
   text-align: center;
   height: 50px;
@@ -55,6 +49,12 @@ h2 {
   width: 100%;
 }
 
+.above-map-container {
+  display: flex;
+  text-align: center;
+  margin: 1em;
+}
+
 .above-map-box {
   flex: 1;
   padding: 1em;
@@ -64,7 +64,51 @@ h2 {
   border-radius: 6px;
 }
 
-.flickr-image {
-  height: 50px;
-  width: 50px;
+.above-map-box#weather {
+  display: flex;
+}
+
+.above-map-box-inner#weather-canvas-div {
+  flex: 1;
+  float: left;
+  padding-left: 50px;
+}
+
+.above-map-box-inner#weather-text-div {
+  flex: 2;
+  float: right;
+}
+
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+#cultural {
+  display: unset;
+}
+
+#views {
+  display: none;
+}
+
+#food {
+  display: none;
 }
