@@ -10,6 +10,11 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+footer {
+  font-family: 'Lato', sans-serif;
+  text-align: center;  
+}
+
 h2 {
   text-align: center;
 }
@@ -47,6 +52,7 @@ h2 {
 
 .plan-route {
   text-align: center;
+  padding-bottom: 50px;
 }
 
 #plan-route-btn {
