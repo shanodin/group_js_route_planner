@@ -12,7 +12,7 @@ db.waypoints.insert([
   {
     name: "Royal Scots Greys Monument",
     type: "Cultural",
-    latLng: {lat: 55.9513852, lng: -3.2015284},
+    latLng: {lat: 55.951377, lng: -3.199189},
     notes: "Good views."
   },
   {
@@ -89,7 +89,7 @@ db.waypoints.insert([
   },
   {
     name: "National Library Edinburgh",
-    type: "Culture",
+    type: "Cultural",
     latLng: {lat: 55.948718, lng: -3.1956766},
     notes: "A great resource for silverfish and readers."
   },
@@ -126,7 +126,7 @@ db.waypoints.insert([
   {
     name: "Scott Monument",
     type: "Views",
-    latLng: {lat: 55.9523836, lng: -3.1954541 },
+    latLng: {lat: 55.952404, lng: -3.193445 },
     notes: "The largest monument to a writer in the world."
   },
   {
@@ -167,26 +167,30 @@ db.waypoints.insert([
   },
   {
     name: "Scottish National Portrait Gallery",
-    type: "Culture",
-    latLng: {lat: 55.955501, lng: -3.1957337 },
+    type: "Cultural",
+    latLng: {lat: 55.955512, lng: -3.193388 },
     notes: "Brilliant, cutting edge photography gallery."
   },
   {
     name: "The Writers' Museum",
-    type: "Culture",
+    type: "Cultural",
     latLng: {lat: 55.9496415, lng: -3.1982412 },
     notes: "A wonderful place if you like words."
   },
   {
     name: "Surgeons' Hall Museums",
-    type: "Culture",
+    type: "Cultural",
     latLng: {lat: 55.94667, lng: -3.1869197 },
     notes: "Grisly. Gory. Great."
   },
   {
     name: "Scottish National Gallery, The Mound",
-    type: "Culture",
+    type: "Cultural",
     latLng: {lat: 55.950902, lng: -3.1978749},
     notes: "Great gallery."
+  },
+  {
+    name: "Johnston Terrace",
+    latLng: {lat: 55.948078, lng: -3.202313}
   }
 ])

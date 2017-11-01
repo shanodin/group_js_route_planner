@@ -1,5 +1,5 @@
-Usher Halluse route_planner;
-db.dropDatabase()
+use route_planner;
+db.dropDatabase();
 
 db.routes.insert([
   {

@@ -51,6 +51,7 @@ var findRoute = function (value, map) {
       map.clearMarkers()
     for(var waypoint of foundRoute[0].waypoints){
       item = {name: waypoint.location}
+      console.log("Waypoint location being sent through:", item);
       map.addWaypointMarker(item);
     }
     routeView.renderRoute(foundRoute[0], directionsService, directionsDisplay)
