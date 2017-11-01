@@ -17,6 +17,12 @@ h2 {
 #main-map {
   height: 400px;
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.tablinks {
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;  
 }
 
 .info-grid {
@@ -55,6 +61,7 @@ h2 {
   border-radius: 6px;
   border: 1px solid black;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 #plan-route-btn:hover {
@@ -114,6 +121,7 @@ ul {
   display: flex;
   text-align: center;
   margin: 1em;
+  height: 125px;
 }
 
 .above-map-box {
@@ -143,7 +151,7 @@ ul {
 div.tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: lightgrey;
 }
 
 /* Style the buttons inside the tab */
@@ -155,15 +163,16 @@ div.tab button {
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
+  width: 33%;
 }
 
 /* Change background color of buttons on hover */
 div.tab button:hover {
-  background-color: #ddd;
+  background-color: lightslategray;
 }
 
 #cultural {
-  display: unset;
+  display: none;
 }
 
 #views {
@@ -186,3 +195,4 @@ div.tab button:hover {
   border-radius: 6px;
   box-sizing: border-box; 
 }
+
