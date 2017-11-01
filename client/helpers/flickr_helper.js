@@ -13,9 +13,9 @@ var flickrHelper = {
       var photo = response.photos.photo[0]
       var imageUrl = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg"
       // getting the appropriate id as stored in mapwrapper
-      var idname = name.replace(" ", "")
+      // var idname = name.replace(" ", "")
       //get the infowindow by id search as it exists and populate inside information.
-      var img = document.querySelector("#"+idname)
+      var img = document.querySelector("#"+tag)
       console.log("flickr helper img html",img);
       img.src = imageUrl
       img.alt = "A photo of " +name

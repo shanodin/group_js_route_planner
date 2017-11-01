@@ -13,6 +13,11 @@ h2 {
   width: 100%;
 }
 
+.flickr-image{
+  height: 80px;
+  width: 80px;
+}
+
 .info-grid {
   display: flex;
   margin: 1em;
