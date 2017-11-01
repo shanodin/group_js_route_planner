@@ -27,7 +27,7 @@ var renderCheckBoxes = function (item, map, customRoute) {
   box.addEventListener('change', function (event) {
     var waypoint = item.name
     if(this.checked){
-    map.addWaypointMarker(item.name, item.type)
+    map.addWaypointMarker(item)
     customRoute.addWaypoint(waypoint)
   } else{
     map.clearMarker(item.name)

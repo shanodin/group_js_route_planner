@@ -30,14 +30,14 @@ MapWrapper.prototype.addMarker = function (object) {
 };
 
 
-MapWrapper.prototype.addWaypointMarker = function (waypointName, wayPointType) {
-    url = "http://localhost:3000/api/waypoints/" + waypointName
+MapWrapper.prototype.addWaypointMarker = function (wayPoint) {
+    url = "http://localhost:3000/api/waypoints/" + wayPoint.name
     requestHelper.getRequest(url, function(waypoint) {
       console.log("AddWaypointMarker:", waypoint);
       var marker = new google.maps.Marker({
         position: waypoint[0].latLng,
         map: this.googleMap,
-        icon: 'assets/' + wayPointType + '.png'
+        icon: 'assets/' + waypoint[0].type + '.png'
 
       })
       var infoWindow = this.createInfoWindow(waypoint[0])

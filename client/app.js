@@ -50,7 +50,8 @@ var findRoute = function (value, map) {
   requestHelper.findRequest(url, function (foundRoute) {
       map.clearMarkers()
     for(var waypoint of foundRoute[0].waypoints){
-      map.addWaypointMarker(waypoint.location);
+      item = {name: waypoint.location}
+      map.addWaypointMarker(item);
     }
     routeView.renderRoute(foundRoute[0], directionsService, directionsDisplay)
   })

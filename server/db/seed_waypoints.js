@@ -120,7 +120,7 @@ db.waypoints.insert([
   {
     name: "Arthur's Seat",
     type: "Views",
-    latLng: {lat: 55.9406257, lng: -3.2122813 },
+    latLng: {lat: 55.944897, lng:  -3.161385 },
     notes: "A great hike, and incredible views down on the city."
   },
   {
