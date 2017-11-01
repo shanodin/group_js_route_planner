@@ -64,7 +64,6 @@ h2 {
   border-radius: 6px;
 }
 
-<<<<<<< HEAD
 .above-map-box#weather {
   display: flex;
 }
@@ -78,7 +77,8 @@ h2 {
 .above-map-box-inner#weather-text-div {
   flex: 2;
   float: right;
-=======
+}
+
 div.tab {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -111,5 +111,4 @@ div.tab button:hover {
 
 #food {
   display: none;
->>>>>>> develop
 }
