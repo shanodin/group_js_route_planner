@@ -48,7 +48,7 @@ db.waypoints.insert([
   {
     name: "Abbey Sanctuary - Historic Scotland",
     type: "Cultural",
-    latLng: { lat: 55.9521635, lng: -3.1751286},
+    latLng: { lat: 55.953006, lng: -3.172166},
     notes: "Beautiful Abbey at the base of the Royal Mile"
   },
   {
