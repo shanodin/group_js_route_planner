@@ -9,7 +9,6 @@ var weatherHelper = {
       var data = JSON.parse(jsonString)
       var weatherDiv = document.querySelector('#weather')
       weatherDiv.innerHTML = data.currently.summary
-      console.log(data)
     })
     xhr.send()
   }

@@ -22,7 +22,7 @@ MapWrapper.prototype.addMarker = function (object) {
   var infoWindow = this.createInfoWindow(object)
     marker.addListener('click', function() {
     infoWindow.open(marker.map, marker);
-
+    flickrHelper.request(object.name)
   })
   this.markers.push(marker);
   console.log(this.markers);
@@ -39,10 +39,10 @@ MapWrapper.prototype.addWaypointMarker = function (waypointName) {
       var infoWindow = this.createInfoWindow(waypoint[0])
       marker.addListener('click', function() {
         infoWindow.open(marker.map, marker);
+        console.log("special waypoint listener:", waypoint[0].name);
+        flickrHelper.request(waypoint[0].name)
       })
       this.markers.push(marker)
-      console.log(marker.position.lat());
-      console.log(this.markers);
     }.bind(this))
 }
 
@@ -55,15 +55,18 @@ MapWrapper.prototype.createInfoWindow = function (object) {
 }
 
 MapWrapper.prototype.standardWindow = function (object) {
-  var infoWindow = new google.maps.InfoWindow({
-    content: "<b>" + object.name + "</b>"
-  })
-  return infoWindow
+var idname = object.name.replace(" ", "")
+//idnames are produced from those objects, same process is repeated in flickrHelper
+var infoWindow = new google.maps.InfoWindow({
+  content: "<div><b>" + object.name + "</b><img id=" + idname+ " src=''/></div></div>"
+})
+return infoWindow
 };
 
 MapWrapper.prototype.enhancedWindow = function (object) {
+  var idname = object.name.replace(" ", "")
   var infoWindow = new google.maps.InfoWindow({
-  content: "<div><b>" + object.name + "</b><br>" + object.notes + "</div>"
+  content: "<div><b>" + object.name + "</b><img id=" + idname +" src=''/>" + object.notes + "</div>"
   })
   return infoWindow
 };

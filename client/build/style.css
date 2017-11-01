@@ -63,3 +63,8 @@ h2 {
   background-color: transparent;
   border-radius: 6px;
 }
+
+.flickr-image {
+  height: 50px;
+  width: 50px;
+}

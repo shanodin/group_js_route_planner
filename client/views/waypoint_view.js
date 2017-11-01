@@ -12,7 +12,7 @@ var waypointViewer = {
   }
 }
 
- var renderCheckBoxes = function (item, ul, map, customRoute) {
+var renderCheckBoxes = function (item, ul, map, customRoute) {
   var li = document.createElement('li')
   var waypointLabel = document.createElement('label')
   waypointLabel.innerText = item.name
