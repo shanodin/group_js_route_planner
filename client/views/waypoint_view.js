@@ -26,17 +26,16 @@ var renderCheckBoxes = function (item, map, customRoute) {
   box.value = item.latLng
   box.addEventListener('change', function (event) {
     var waypoint = item.name
-    if (this.checked) {
-      map.addWaypointMarker(item.name)
-      customRoute.addWaypoint(waypoint)
-    } else {
-      map.clearMarker(item.name)
-      var filteredArray = customRoute.waypoints.filter(function (waypoint) {
-        return waypoint.location !== item.name
-      })
-      customRoute.waypoints = filteredArray
-    }
-  })
+    if(this.checked){
+    map.addWaypointMarker(item.name, item.type)
+    customRoute.addWaypoint(waypoint)
+  } else{
+    map.clearMarker(item.name)
+    var filteredArray = customRoute.waypoints.filter(function (waypoint) {
+      return waypoint.location !== item.name
+    })
+    customRoute.waypoints = filteredArray
+  }})
   waypointLabel.appendChild(box)
 
   switch (item.type) {
