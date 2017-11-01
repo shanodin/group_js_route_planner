@@ -17,7 +17,8 @@ var MapWrapper = function (container) {
 MapWrapper.prototype.addMarker = function (object) {
   var marker = new google.maps.Marker({
     position: object.latLng,
-    map: this.googleMap
+    map: this.googleMap,
+    icon: 'assets/Flag.png'
   })
   var infoWindow = this.createInfoWindow(object)
     marker.addListener('click', function() {
@@ -29,12 +30,14 @@ MapWrapper.prototype.addMarker = function (object) {
 };
 
 
-MapWrapper.prototype.addWaypointMarker = function (waypointName) {
+MapWrapper.prototype.addWaypointMarker = function (waypointName, wayPointType) {
     url = "http://localhost:3000/api/waypoints/" + waypointName
     requestHelper.getRequest(url, function(waypoint) {
       var marker = new google.maps.Marker({
         position: waypoint[0].latLng,
-        map: this.googleMap
+        map: this.googleMap,
+        icon: 'assets/' + wayPointType + '.png'
+
       })
       var infoWindow = this.createInfoWindow(waypoint[0])
       marker.addListener('click', function() {

@@ -16,7 +16,6 @@ var autocompleteHelper = {
         name: result.name,
         latLng: {lat: result.geometry.location.lat(), lng: result.geometry.location.lng()}
       }
-      console.log(result);
       mainMap.addMarker(objectForMarkerification)
     })
   }

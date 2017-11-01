@@ -26,7 +26,7 @@ var waypointViewer = {
   box.addEventListener('change', function(event){
     var waypoint = item.name
     if(this.checked){
-    map.addWaypointMarker(item.name)
+    map.addWaypointMarker(item.name, item.type)
     customRoute.addWaypoint(waypoint)
   } else{
     map.clearMarker(item.name)
