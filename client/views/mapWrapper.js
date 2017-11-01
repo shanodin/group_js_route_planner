@@ -32,6 +32,7 @@ MapWrapper.prototype.addMarker = function (object) {
 MapWrapper.prototype.addWaypointMarker = function (waypointName) {
     url = "http://localhost:3000/api/waypoints/" + waypointName
     requestHelper.getRequest(url, function(waypoint) {
+      console.log("AddWaypointMarker:", waypoint);
       var marker = new google.maps.Marker({
         position: waypoint[0].latLng,
         map: this.googleMap
@@ -79,6 +80,13 @@ MapWrapper.prototype.clearMarker = function (waypointName) {
     })
     this.markers = filteredArray;
   }.bind(this))
+};
+
+MapWrapper.prototype.clearMarkers = function () {
+    this.markers.forEach(function(marker){
+      marker.setMap(null);
+    })
+    this.markers = []
 };
 // MapWrapper.prototype.iconSorter = function (object) {
 //   flickrHelper.request(object.name)

@@ -1,4 +1,4 @@
-use route_planner;
+Usher Halluse route_planner;
 db.dropDatabase()
 
 db.routes.insert([
@@ -7,12 +7,12 @@ db.routes.insert([
     origin: {lat: 55.9519361, lng: -3.1917565},
     destination: {lat: 55.9519361, lng: -3.1917565},
     waypoints:[{location: "Scott Monument", stopover: true},
-    {location: "The Royal Scots Greys Monument", stopover: true},
-    {location: "Ross Fountain", stopover: true},
-    {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
+    {location: "Royal Scots Greys Monument", stopover: true},
+    {location: "Princes Street Gardens", stopover: true},
+    {location: "Usher Hall", stopover: true},
     {location: "Mary's Milk Bar", stopover: true},
     {location: "The Bow Bar", stopover: false},
-    {location: "David Hume Statue", stopover: true},
+    {location: "David Hume Statue on Royal Mile", stopover: true},
     {location: "Bella Italia Edinburgh Northbridge", stopover: true}]
   },
 
@@ -22,12 +22,11 @@ db.routes.insert([
     destination: {lat: 55.9519361, lng: -3.1917565},
     waypoints:[{location: "Scott Monument", stopover: true},
     {location: "The Royal Scots Greys Monument", stopover: true},
-    {location: "Ross Fountain", stopover: true},
-    {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
+    {location: "Princes Street Gardens", stopover: true},
+    {location: "Usher Hall", stopover: true},
     {location: "Mary's Milk Bar", stopover: true},
     {location: "The Bow Bar", stopover: false},
-    {location: "David Hume Statue", stopover: true},
-    {location: "Bella Italia Edinburgh Northbridge", stopover: true},
+    {location: "David Hume Statue on Royal Mile", stopover: true},
     {location: "Abbey Sanctuary - Historic Scotland", stopover: true},
     {location: "Calton Hill", stopover: true}]
   },
@@ -39,12 +38,11 @@ db.routes.insert([
     waypoints:[
       {location: "Scott Monument", stopover: true},
       {location: "The Royal Scots Greys Monument", stopover: true},
-      {location: "Ross Fountain", stopover: true},
-      {location: {lat: 55.947641,lng: -3.200549}, stopover: true},
+      {location: "Princes Street Gardens", stopover: true},
+      {location: "Usher Hall", stopover: true},
       {location: "Mary's Milk Bar", stopover: true},
       {location: "The Bow Bar", stopover: false},
-      {location: "David Hume Statue", stopover: true},
-      {location: "Bella Italia Edinburgh Northbridge", stopover: true},
+      {location: "David Hume Statue on Royal Mile", stopover: true},
       {location: "Abbey Sanctuary - Historic Scotland", stopover: true},
       {location: "Calton Hill", stopover: true},
       {location: "Scottish National Portrait Gallery", stopover: true}
@@ -67,7 +65,6 @@ db.routes.insert([
       {location: "Calton Hill", stopover: true},
       {location: "Circus Lane Edinburgh", stopover: true},
       {location: "Dean Village", stopover: true},
-      {location: "Belford Mews", stopover: true},
       {location: "Royal Botanic Garden Edinburgh", stopover: true},
       {location: "Arthur's Seat", stopover: true}
     ]

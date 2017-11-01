@@ -29,7 +29,7 @@ var app = function () {
   routeView.setUpRouteList()
   var routeSelect = document.querySelector('#route-select')
   routeSelect.addEventListener('change', function () {
-    findRoute(this.value)
+    findRoute(this.value, mainMap)
   })
 
   // add the cool autocomplete thing
@@ -45,9 +45,13 @@ var app = function () {
 
 }
 
-var findRoute = function (value) {
+var findRoute = function (value, map) {
   var url = 'http://localhost:3000/api/routes/' + value
   requestHelper.findRequest(url, function (foundRoute) {
+      map.clearMarkers()
+    for(var waypoint of foundRoute[0].waypoints){
+      map.addWaypointMarker(waypoint.location);
+    }
     routeView.renderRoute(foundRoute[0], directionsService, directionsDisplay)
   })
 }

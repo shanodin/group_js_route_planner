@@ -12,7 +12,7 @@ var routeView = {
   },
 
   renderRoute: function (route, finder, displayer) {
-    console.log('requesting route')
+    // console.log('requesting route')
     finder.route({
       origin:  route.origin,
       destination: route.destination,
@@ -20,7 +20,7 @@ var routeView = {
       waypoints: route.waypoints
     }, function (response, status) {
       displayer.setDirections(response)
-      console.log('rendering to screen', response);
+      // console.log('rendering to screen', response);
     })
   }
 

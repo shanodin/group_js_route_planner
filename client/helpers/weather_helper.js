@@ -34,8 +34,8 @@ var weatherHelper = {
 
 var setSkycon = function (weatherType) {
   var skycons = new Skycons({ 'color': 'black' })
-  console.log(Skycons.CLEAR_DAY)
-  
+  // console.log(Skycons.CLEAR_DAY)
+
   var skycon = null
   switch (weatherType) {
     case 'clear-day':
@@ -70,7 +70,7 @@ var setSkycon = function (weatherType) {
       break
   }
   var iconDiv = document.querySelector('#weather-canvas')
-  console.log(iconDiv)
+  // console.log(iconDiv)
   skycons.set(iconDiv, skycon)
   skycons.play()
 }
