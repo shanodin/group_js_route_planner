@@ -1,7 +1,7 @@
-* { 
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
-     box-sizing: border-box; 
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing: border-box;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 
 footer {
   font-family: 'Lato', sans-serif;
-  text-align: center;  
+  text-align: center;
 }
 
 #header {
@@ -42,7 +42,7 @@ h2 {
 
 .tablinks {
   font-size: 13px;
-  font-family: 'Lato', sans-serif;  
+  font-family: 'Lato', sans-serif;
 }
 
 .info-grid {
@@ -65,7 +65,7 @@ h2 {
 }
 
 #plan-route-btn {
-  font-family: 'Lato', sans-serif;  
+  font-family: 'Lato', sans-serif;
   text-align: center;
   display: inline-block;
   border-radius: 6px;
@@ -160,6 +160,7 @@ ul {
 .above-map-box-inner#weather-text-div {
   flex: 2;
   float: right;
+  font-size: 18px;
 }
 
 div.tab {
@@ -200,13 +201,12 @@ div.tab button:hover {
 #route-select {
   height: 40px;
   font-size: 14px;
-  font-family: 'Lato', sans-serif;  
+  font-family: 'Lato', sans-serif;
   width: 200px;
   padding: 6px 10px;
   margin-top: 10px;
   background-color: #fff;
   border: 1px solid black;
   border-radius: 6px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
-
