@@ -5,11 +5,11 @@ var flickrHelper = require("../helpers/flickr_helper.js")
 
 var MapWrapper = function (container) {
   this.markers = [],
-  this.googleMap = new google.maps.Map(container, {
-    center: {lat: 55.949768, lng: -3.197314},
-    zoom: 14,
-    styles: styling
-  })
+    this.googleMap = new google.maps.Map(container, {
+      center: { lat: 55.949768, lng: -3.197314 },
+      zoom: 14,
+      styles: styling
+    })
   this.googleMap.setMapTypeId('roadmap')
   // this.addWaypointMarker = this.addWaypointMarker.bind(this)
 }
@@ -19,55 +19,58 @@ MapWrapper.prototype.addMarker = function (object) {
     position: object.latLng,
     map: this.googleMap,
     icon: 'assets/Flag.png'
+
   })
   var infoWindow = this.createInfoWindow(object)
-    marker.addListener('click', function() {
+  marker.addListener('click', function () {
     infoWindow.open(marker.map, marker);
-
+    flickrHelper.request(object.name)
   })
   this.markers.push(marker);
   console.log(this.markers);
 };
 
 
-MapWrapper.prototype.addWaypointMarker = function (wayPoint) {
-    url = "http://localhost:3000/api/waypoints/" + wayPoint.name
-    requestHelper.getRequest(url, function(waypoint) {
-      console.log("AddWaypointMarker:", waypoint);
-      var marker = new google.maps.Marker({
-        position: waypoint[0].latLng,
-        map: this.googleMap,
-        icon: 'assets/' + waypoint[0].type + '.png'
-
-      })
-      var infoWindow = this.createInfoWindow(waypoint[0])
-      marker.addListener('click', function() {
-        infoWindow.open(marker.map, marker);
-      })
-      this.markers.push(marker)
-      console.log(marker.position.lat());
-      console.log(this.markers);
-    }.bind(this))
+MapWrapper.prototype.addWaypointMarker = function (waypoint) {
+  url = "http://localhost:3000/api/waypoints/" + waypoint.name
+  requestHelper.getRequest(url, function (waypoint) {
+    var marker = new google.maps.Marker({
+      position: waypoint[0].latLng,
+      map: this.googleMap,
+      icon: 'assets/' + waypoint[0].type + '.png'
+    })
+    var infoWindow = this.createInfoWindow(waypoint[0])
+    marker.addListener('click', function () {
+      infoWindow.open(marker.map, marker);
+      flickrHelper.request(waypoint[0].name)
+    })
+    this.markers.push(marker)
+  }.bind(this))
 }
 
 MapWrapper.prototype.createInfoWindow = function (object) {
-  if(object.notes) {
+  if (object.notes) {
     return this.enhancedWindow(object)
-    } else {
+  } else {
     return this.standardWindow(object)
   }
 }
 
 MapWrapper.prototype.standardWindow = function (object) {
+  var idname = flickrHelper.tagMaker(object.name)
+  //idnames are produced from those objects, same process is repeated in flickrHelper
   var infoWindow = new google.maps.InfoWindow({
-    content: "<b>" + object.name + "</b>"
+    content: "<div><b>" + object.name + "</b><img id=" + idname + " src=''/></div></div>"
   })
   return infoWindow
 };
 
 MapWrapper.prototype.enhancedWindow = function (object) {
+  var idname = flickrHelper.tagMaker(object.name)
+  console.log(idname)
   var infoWindow = new google.maps.InfoWindow({
-  content: "<div><b>" + object.name + "</b><br>" + object.notes + "</div>"
+    maxWidth: 300,
+    content: "<div><b>" + object.name + "</b></div><div><img id=" + idname + " src=''/></div><div>" + object.notes + "</div>"
   })
   return infoWindow
 };
