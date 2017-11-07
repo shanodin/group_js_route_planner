@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient
 
 
 var QueryHelper = function(collection) {
-  this.url = 'mongodb://localhost:27017/route_planner'
+  this.url = 'mongodb://heroku_w8mx3p4r:r5if80p5l96icpgk2pcgnqtnp4@ds149865.mlab.com:49865/heroku_w8mx3p4r'
   this.collection = collection;
 }
 
