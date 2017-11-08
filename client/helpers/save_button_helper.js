@@ -11,7 +11,7 @@ var saveButton = function (customRoute) {
     customRoute.name = routeName.value
     customRoute.origin = originInput.value
     customRoute.destination = destinationInput.value
-    requestHelper.postRequest('http://localhost:3000/api/routes', customRoute)
+    requestHelper.postRequest('https://murmuring-sea-67290.herokuapp.com/api/routes', customRoute)
     routeView.setUpRouteList()
     routeView.renderRoute(customRoute, directionsService, directionsDisplay)
   })

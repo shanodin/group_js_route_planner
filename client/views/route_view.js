@@ -4,7 +4,7 @@ var dropdownMaker = require('./dropdownMaker.js')
 var routeView = {
 
   setUpRouteList: function () {
-    var url = 'http://localhost:3000/api/routes'
+    var url = 'https://murmuring-sea-67290.herokuapp.com/api/routes'
     var routeSelect = document.querySelector('#route-select')
     requestHelper.getRequest(url, function (routes) {
       dropdownMaker.setUpDropDown(routes, routeSelect)

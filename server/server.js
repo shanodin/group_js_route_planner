@@ -14,5 +14,5 @@ app.use('/api/waypoints', waypointRouter)
 app.use('/api/routes', routesRouter)
 
 app.listen(process.env.PORT, function () {
-  console.log('App running on port 3000')
+  console.log('App running')
 })

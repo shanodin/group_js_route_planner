@@ -46,7 +46,7 @@ var app = function () {
 }
 
 var findRoute = function (value, map) {
-  var url = 'http://localhost:3000/api/routes/' + value
+  var url = 'https://murmuring-sea-67290.herokuapp.com/api/routes/' + value
   requestHelper.findRequest(url, function (foundRoute) {
       map.clearMarkers()
     for(var waypoint of foundRoute[0].waypoints){
