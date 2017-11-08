@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha specs",
-    "start": "cd server && nodemon server.js",
+    "start": "cd server && node server.js",
     "build": "cd client && webpack -w",
     "seed": "cd server/db && mongo < seed_routes.js && mongo < seed_waypoints.js"
   },
