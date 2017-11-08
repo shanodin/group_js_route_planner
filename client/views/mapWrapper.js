@@ -32,7 +32,7 @@ MapWrapper.prototype.addMarker = function (object) {
 
 
 MapWrapper.prototype.addWaypointMarker = function (waypoint) {
-  url = "http://localhost:3000/api/waypoints/" + waypoint.name
+  url = "https://murmuring-sea-67290.herokuapp.com/api/waypoints/" + waypoint.name
   requestHelper.getRequest(url, function (waypoint) {
     var marker = new google.maps.Marker({
       position: waypoint[0].latLng,
@@ -76,7 +76,7 @@ MapWrapper.prototype.enhancedWindow = function (object) {
 };
 
 MapWrapper.prototype.clearMarker = function (waypointName) {
-  url = "http://localhost:3000/api/waypoints/" + waypointName
+  url = "https://murmuring-sea-67290.herokuapp.com/api/waypoints/" + waypointName
   requestHelper.getRequest(url, function (waypoint) {
     var filteredArray = this.markers.filter(function (marker) {
       if(marker.position.lat() === waypoint[0].latLng.lat){

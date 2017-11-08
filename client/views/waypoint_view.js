@@ -2,7 +2,7 @@ var requestHelper = require('../helpers/request_helper.js')
 
 var waypointViewer = {
   getWaypointsFromDB: function (map, customRoute) {
-    var url = 'http://localhost:3000/api/waypoints'
+    var url = 'https://murmuring-sea-67290.herokuapp.com/api/waypoints'
     requestHelper.getRequest(url, function (waypoints) {
       waypoints.forEach(function (waypoint) {
         renderCheckBoxes(waypoint, map, customRoute)
