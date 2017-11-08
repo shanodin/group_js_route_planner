@@ -187,7 +187,7 @@ var dropdownMaker = __webpack_require__(2)
 var routeView = {
 
   setUpRouteList: function () {
-    var url = 'http://localhost:3000/api/routes'
+    var url = 'https://murmuring-sea-67290.herokuapp.com/api/routes'
     var routeSelect = document.querySelector('#route-select')
     requestHelper.getRequest(url, function (routes) {
       dropdownMaker.setUpDropDown(routes, routeSelect)
@@ -265,7 +265,7 @@ var app = function () {
 }
 
 var findRoute = function (value, map) {
-  var url = 'http://localhost:3000/api/routes/' + value
+  var url = 'https://murmuring-sea-67290.herokuapp.com/api/routes/' + value
   requestHelper.findRequest(url, function (foundRoute) {
       map.clearMarkers()
     for(var waypoint of foundRoute[0].waypoints){
@@ -318,7 +318,7 @@ MapWrapper.prototype.addMarker = function (object) {
 
 
 MapWrapper.prototype.addWaypointMarker = function (waypoint) {
-  url = "http://localhost:3000/api/waypoints/" + waypoint.name
+  url = "https://murmuring-sea-67290.herokuapp.com/api/waypoints/" + waypoint.name
   requestHelper.getRequest(url, function (waypoint) {
     var marker = new google.maps.Marker({
       position: waypoint[0].latLng,
@@ -362,7 +362,7 @@ MapWrapper.prototype.enhancedWindow = function (object) {
 };
 
 MapWrapper.prototype.clearMarker = function (waypointName) {
-  url = "http://localhost:3000/api/waypoints/" + waypointName
+  url = "https://murmuring-sea-67290.herokuapp.com/api/waypoints/" + waypointName
   requestHelper.getRequest(url, function (waypoint) {
     var filteredArray = this.markers.filter(function (marker) {
       if(marker.position.lat() === waypoint[0].latLng.lat){
@@ -667,7 +667,7 @@ var requestHelper = __webpack_require__(0)
 
 var waypointViewer = {
   getWaypointsFromDB: function (map, customRoute) {
-    var url = 'http://localhost:3000/api/waypoints'
+    var url = 'https://murmuring-sea-67290.herokuapp.com/api/waypoints'
     requestHelper.getRequest(url, function (waypoints) {
       waypoints.forEach(function (waypoint) {
         renderCheckBoxes(waypoint, map, customRoute)
@@ -853,7 +853,7 @@ var saveButton = function (customRoute) {
     customRoute.name = routeName.value
     customRoute.origin = originInput.value
     customRoute.destination = destinationInput.value
-    requestHelper.postRequest('http://localhost:3000/api/routes', customRoute)
+    requestHelper.postRequest('https://murmuring-sea-67290.herokuapp.com/api/routes', customRoute)
     routeView.setUpRouteList()
     routeView.renderRoute(customRoute, directionsService, directionsDisplay)
   })
