@@ -1,6 +1,6 @@
-use route_planner;
+// use route_planner;
 
-db.waypoints.drop();
+// db.waypoints.drop();
 
 db.waypoints.insert([
   {
